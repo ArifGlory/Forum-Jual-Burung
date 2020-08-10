@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_orange">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rlLoginDetail">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_appicon"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rlLoginDetail"
+        android:background="@drawable/bg_top_shap_10">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Login"
+            android:textColor="@color/light_orange"
+            android:textSize="16sp"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            fontPath="@string/font_medium"
+            android:layout_height="30dp"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Email"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:id="@+id/edPassword"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/edEmail"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/tvForgetPassword"
+            fontPath="@string/font_bold"
+            android:onClick="onClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edPassword"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible"
+            android:text="Forgot Password?"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:onClick="onClick"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvForgetPassword"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/light_orange"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/tvLogin">
+
+            <TextView
+                android:fontFamily="@font/roboto_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="10dp"
+                android:text="Belum Punya Akun ?"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:fontFamily="@font/roboto_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Daftar"
+                android:id="@+id/tvSignup"
+                android:onClick="onClick"
+                android:textColor="@color/light_orange"
+                android:textSize="14sp"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

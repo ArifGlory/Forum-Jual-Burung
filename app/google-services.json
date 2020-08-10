@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "253426456135",
+    "firebase_url": "https://forum-jual-burung.firebaseio.com",
+    "project_id": "forum-jual-burung",
+    "storage_bucket": "forum-jual-burung.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253426456135:android:bb211a5b8d241d73924362",
+        "android_client_info": {
+          "package_name": "com.tapisdev.forumjualburung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253426456135-ps2o9t4q4f5novv445jfleq114ifm34c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tapisdev.forumjualburung",
+            "certificate_hash": "62d31000c6f26d56cf9fa2792e8f23e7cfe44a86"
+          }
+        },
+        {
+          "client_id": "253426456135-rbv3mmth5rfacclthphfh0nr6bo0ecjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjTblWIm4tUmf430PG0uvC6-y1RsK6Xm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253426456135-rbv3mmth5rfacclthphfh0nr6bo0ecjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

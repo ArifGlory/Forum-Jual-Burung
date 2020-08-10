@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/rlToolBar">
+
+        <ImageView
+            android:id="@+id/ivPenyedia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/trans_black" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/ivCart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="6dp"
+                android:padding="5dp"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:onClick="onClick"
+                android:tint="@color/white"
+                android:src="@drawable/ic_cart"
+                tools:ignore="MissingConstraints" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlToolBar">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/cvFoodName"
+            app:cardCornerRadius="5dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Nama Toko"
+                        android:textSize="14sp"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/tvName"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        tools:ignore="MissingPrefix" />
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cvFoodName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            android:id="@+id/cvFoodDetail"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabMode="fixed" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tabs_main"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

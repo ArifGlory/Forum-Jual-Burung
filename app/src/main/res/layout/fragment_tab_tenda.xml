@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AdminCateringFragment">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_below="@+id/ivLogo"
+        android:fontFamily="@font/mark_web_w04_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:text="Tenda"
+        android:textColor="@color/light_orange"
+        android:textSize="20sp"
+        tools:ignore="MissingPrefix" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTenda"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_margin="15dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/water_loading"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+
+</RelativeLayout>
