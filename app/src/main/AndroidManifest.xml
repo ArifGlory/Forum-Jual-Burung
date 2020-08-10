@@ -39,13 +39,13 @@
             android:name="com.tapisdev.forumjualburung.activity.admin.AddTendaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.tapisdev.forumjualburung.activity.admin.DetailCateringActivity"
+            android:name="com.tapisdev.forumjualburung.activity.admin.DetailTokoActivity"
             android:label="Detail Catering" />
         <activity
             android:name="com.tapisdev.forumjualburung.activity.admin.EditProfilAdminActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.tapisdev.forumjualburung.activity.admin.AddCateringActivity"
+            android:name="com.tapisdev.forumjualburung.activity.admin.AddTokoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.tapisdev.forumjualburung.activity.admin.DashboardAdminActivity"

@@ -14,7 +14,12 @@ import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.Tenda
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_add_catering.*
+import kotlinx.android.synthetic.main.activity_add_tenda.*
+import kotlinx.android.synthetic.main.activity_add_toko.*
+import kotlinx.android.synthetic.main.activity_add_toko.edDeskripsi
+import kotlinx.android.synthetic.main.activity_add_toko.edFullName
+import kotlinx.android.synthetic.main.activity_add_toko.ivCatering
+import kotlinx.android.synthetic.main.activity_add_toko.tvAdd
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.ArrayList

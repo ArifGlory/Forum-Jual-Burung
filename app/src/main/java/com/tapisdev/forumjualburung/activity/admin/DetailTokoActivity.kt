@@ -15,23 +15,22 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
-import com.tapisdev.forumjualburung.model.Catering
+import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_detail_catering.*
-import kotlinx.android.synthetic.main.activity_detail_catering.edDeskripsi
-import kotlinx.android.synthetic.main.activity_detail_catering.edFullName
-import kotlinx.android.synthetic.main.activity_detail_catering.edHarga
-import kotlinx.android.synthetic.main.activity_detail_catering.ivCatering
+import kotlinx.android.synthetic.main.activity_detail_toko.*
+import kotlinx.android.synthetic.main.activity_detail_toko.edDeskripsi
+import kotlinx.android.synthetic.main.activity_detail_toko.edFullName
+import kotlinx.android.synthetic.main.activity_detail_toko.edAlamat
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.ArrayList
 
-class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListener {
+class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
-    lateinit var catering : Catering
+    lateinit var toko : Toko
     var state = "view"
-    var TAG_DELETE = "deleteCatering"
-    var TAG_EDIT = "editCatering"
+    var TAG_DELETE = "deleteToko"
+    var TAG_EDIT = "editToko"
     lateinit var i : Intent
 
     private val PICK_IMAGE_REQUEST = 71
@@ -43,10 +42,10 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_catering)
+        setContentView(R.layout.activity_detail_toko)
 
         i = intent
-        catering = i.getSerializableExtra("catering") as Catering
+        toko = i.getSerializableExtra("toko") as Toko
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
         permissionHelper = PermissionHelper(this)
@@ -64,7 +63,7 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
                 .setConfirmClickListener { sDialog ->
                     sDialog.dismissWithAnimation()
                     showLoading(this)
-                    cateringRef.document(catering.cateringId.toString()).delete().addOnSuccessListener {
+                    tokoRef.document(toko.tokoId.toString()).delete().addOnSuccessListener {
                         dismissLoading()
                         showSuccessMessage("Data berhasil dihapus")
                         onBackPressed()
@@ -85,7 +84,7 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
         tvSaveEdit.setOnClickListener {
             checkValidation()
         }
-        ivCatering.setOnClickListener {
+        ivToko.setOnClickListener {
             launchGallery()
         }
 
@@ -95,29 +94,27 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
 
     fun checkValidation(){
         var getName = edFullName.text.toString()
-        var getHarga = edHarga.text.toString()
+        var getAlamat = edAlamat.text.toString()
         var getDeskripsi = edDeskripsi.text.toString()
 
         if (getName.equals("") || getName.length == 0){
             showErrorMessage("Nama Belum diisi")
-        } else if (getHarga.equals("") || getHarga.length == 0){
+        } else if (getAlamat.equals("") || getAlamat.length == 0){
             showErrorMessage("Harga Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
         }else if (fileUri == null) {
-            val hrg = Integer.parseInt(getHarga)
-            updateDataOnly(getName,hrg,getDeskripsi)
+            updateDataOnly(getName,getAlamat,getDeskripsi)
         }else{
-            val hrg = Integer.parseInt(getHarga)
-            uploadAndUpdate(getName,hrg,getDeskripsi)
+            uploadAndUpdate(getName,getAlamat,getDeskripsi)
         }
     }
 
-    fun updateDataOnly(name : String,harga : Int,deskripsi : String){
+    fun updateDataOnly(name : String,alamat : String,deskripsi : String){
         showLoading(this)
-        cateringRef.document(catering.cateringId.toString()).update("nama",name)
-        cateringRef.document(catering.cateringId.toString()).update("harga",harga)
-        cateringRef.document(catering.cateringId.toString()).update("deksripsi",deskripsi).addOnCompleteListener { task ->
+        tokoRef.document(toko.tokoId.toString()).update("nama",name)
+        tokoRef.document(toko.tokoId.toString()).update("alamat",alamat)
+        tokoRef.document(toko.tokoId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
             dismissLoading()
             if (task.isSuccessful){
                 showSuccessMessage("Ubah data berhasil")
@@ -129,7 +126,7 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
         }
     }
 
-    fun uploadAndUpdate(name : String,harga : Int,deskripsi : String){
+    fun uploadAndUpdate(name : String,alamat : String,deskripsi : String){
         showLoading(this)
         if (fileUri != null){
             val baos = ByteArrayOutputStream()
@@ -155,10 +152,10 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
                         val url = downloadUri!!.toString()
                         Log.d(TAG_EDIT,"download URL : "+ downloadUri.toString())// This is the one you should store
 
-                        cateringRef.document(catering.cateringId.toString()).update("nama",name)
-                        cateringRef.document(catering.cateringId.toString()).update("harga",harga)
-                        cateringRef.document(catering.cateringId.toString()).update("foto",url)
-                        cateringRef.document(catering.cateringId.toString()).update("deksripsi",deskripsi).addOnCompleteListener { task ->
+                        tokoRef.document(toko.tokoId.toString()).update("nama",name)
+                        tokoRef.document(toko.tokoId.toString()).update("alamat",alamat)
+                        tokoRef.document(toko.tokoId.toString()).update("foto",url)
+                        tokoRef.document(toko.tokoId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
                             dismissLoading()
                             if (task.isSuccessful){
                                 showSuccessMessage("Ubah data berhasil")
@@ -186,29 +183,29 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
 
     fun updateUI(){
         if (state.equals("view")){
-            edFullName.setText(catering.nama)
-            edHarga.setText(catering.harga.toString())
-            edDeskripsi.setText(catering.deksripsi)
+            edFullName.setText(toko.nama)
+            edAlamat.setText(toko.alamat.toString())
+            edDeskripsi.setText(toko.deskripsi)
             tvHintFoto.visibility = View.INVISIBLE
             tvSaveEdit.visibility = View.INVISIBLE
 
             Glide.with(this)
-                .load(catering.foto)
-                .into(ivCatering)
+                .load(toko.foto)
+                .into(ivToko)
 
             edFullName.isEnabled = false
-            edHarga.isEnabled = false
+            edAlamat.isEnabled = false
             edDeskripsi.isEnabled = false
-            ivCatering.isEnabled = false
+            ivToko.isEnabled = false
             tvSaveEdit.isEnabled = false
         }else if (state.equals("edit")){
             tvHintFoto.visibility = View.VISIBLE
             tvSaveEdit.visibility = View.VISIBLE
 
             edFullName.isEnabled = true
-            edHarga.isEnabled = true
+            edAlamat.isEnabled = true
             edDeskripsi.isEnabled = true
-            ivCatering.isEnabled = true
+            ivToko.isEnabled = true
             tvSaveEdit.isEnabled= true
         }
     }
@@ -239,7 +236,7 @@ class DetailCateringActivity : BaseActivity(),PermissionHelper.PermissionListene
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
                 fotoBitmap = bitmap
-                ivCatering.setImageBitmap(bitmap)
+                ivToko.setImageBitmap(bitmap)
             } catch (e: IOException) {
                 e.printStackTrace()
             }

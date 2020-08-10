@@ -15,8 +15,8 @@ import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.UserPreference
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_add_catering.edFullName
-import kotlinx.android.synthetic.main.activity_add_catering.ivCatering
+import kotlinx.android.synthetic.main.activity_add_toko.edFullName
+import kotlinx.android.synthetic.main.activity_add_toko.ivCatering
 import kotlinx.android.synthetic.main.activity_edit_profil_admin.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException

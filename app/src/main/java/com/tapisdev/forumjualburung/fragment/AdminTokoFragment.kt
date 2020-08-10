@@ -10,20 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tapisdev.forumjualburung.R
-import com.tapisdev.forumjualburung.activity.admin.AddCateringActivity
-import com.tapisdev.forumjualburung.adapter.AdapterCatering
+import com.tapisdev.forumjualburung.activity.admin.AddTokoActivity
+import com.tapisdev.forumjualburung.adapter.AdapterToko
 import com.tapisdev.forumjualburung.base.BaseFragment
-import com.tapisdev.forumjualburung.model.Catering
+import com.tapisdev.forumjualburung.model.Toko
 import kotlinx.android.synthetic.main.fragment_admin_tenda.*
 
-class AdminCateringFragment : BaseFragment() {
+class AdminTokoFragment : BaseFragment() {
 
-    lateinit var rvCatering: RecyclerView
+    lateinit var rvToko: RecyclerView
     lateinit var fab : FloatingActionButton
     var TAG_GET_CATERING = "getCatering"
-    lateinit var adapter:AdapterCatering
+    lateinit var adapter:AdapterToko
 
-    var listCatering = ArrayList<Catering>()
+    var listToko = ArrayList<Toko>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,49 +31,47 @@ class AdminCateringFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_admin_catering, container, false)
-        rvCatering = root.findViewById(R.id.rvCatering)
+        val root = inflater.inflate(R.layout.fragment_admin_toko, container, false)
+        rvToko = root.findViewById(R.id.rvToko)
         fab = root.findViewById(R.id.fab)
 
-        adapter = AdapterCatering(listCatering)
+        adapter = AdapterToko(listToko)
 
-        rvCatering.setHasFixedSize(true)
-        rvCatering.layoutManager = LinearLayoutManager(activity)
-        rvCatering.adapter = adapter
+        rvToko.setHasFixedSize(true)
+        rvToko.layoutManager = LinearLayoutManager(activity)
+        rvToko.adapter = adapter
 
         fab.setOnClickListener {
-            val i = Intent(activity,AddCateringActivity::class.java)
+            val i = Intent(activity,AddTokoActivity::class.java)
             startActivity(i)
         }
 
 
 
-        getDataMyCatering()
+        getDataMyToko()
         return root
     }
 
     companion object {
-        fun newInstance(): AdminCateringFragment{
-            val fragment = AdminCateringFragment()
+        fun newInstance(): AdminTokoFragment{
+            val fragment = AdminTokoFragment()
             val args = Bundle()
             fragment.arguments = args
             return fragment
         }
     }
 
-    fun getDataMyCatering(){
-        cateringRef.get().addOnSuccessListener { result ->
-            listCatering.clear()
+    fun getDataMyToko(){
+        tokoRef.get().addOnSuccessListener { result ->
+            listToko.clear()
             //Log.d(TAG_GET_CATERING," datanya "+result.documents)
             for (document in result){
                 //Log.d(TAG_GET_CATERING, "Datanya : "+document.data)
-                var catering : Catering = document.toObject(Catering::class.java)
-                catering.cateringId = document.id
-                if (catering.idAdmin.equals(auth.currentUser?.uid)){
-                    listCatering.add(catering)
-                }
+                var toko : Toko = document.toObject(Toko::class.java)
+                toko.tokoId = document.id
+                listToko.add(toko)
             }
-            if (listCatering.size == 0){
+            if (listToko.size == 0){
                 animation_view.setAnimation(R.raw.empty_box)
                 animation_view.playAnimation()
                 animation_view.loop(false)
@@ -90,7 +88,7 @@ class AdminCateringFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        getDataMyCatering()
+        getDataMyToko()
     }
 
 }

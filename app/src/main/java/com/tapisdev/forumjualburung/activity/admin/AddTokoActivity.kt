@@ -13,16 +13,17 @@ import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.Catering
+import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_add_catering.*
+import kotlinx.android.synthetic.main.activity_add_toko.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
 
-class AddCateringActivity : BaseActivity(), PermissionHelper.PermissionListener {
+class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
 
-    var TAG_SIMPAN = "simpanCatering"
-    lateinit var cateringModel : Catering
+    var TAG_SIMPAN = "simpanToko"
+    lateinit var tokoModel : Toko
 
     private val PICK_IMAGE_REQUEST = 71
     private var filePath: Uri? = null
@@ -35,7 +36,7 @@ class AddCateringActivity : BaseActivity(), PermissionHelper.PermissionListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_catering)
+        setContentView(R.layout.activity_add_toko)
 
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
@@ -78,29 +79,26 @@ class AddCateringActivity : BaseActivity(), PermissionHelper.PermissionListener 
 
     fun checkValidation(){
         var getName = edFullName.text.toString()
-        var getHarga = edHarga.text.toString()
+        var getAlamat = edAlamat.text.toString()
         var getDeskripsi = edDeskripsi.text.toString()
 
         if (getName.equals("") || getName.length == 0){
             showErrorMessage("Nama Belum diisi")
-        } else if (getHarga.equals("") || getHarga.length == 0){
+        } else if (getAlamat.equals("") || getAlamat.length == 0){
             showErrorMessage("Harga Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
         }else {
-            var harga = Integer.parseInt(getHarga)
-            cateringModel = Catering("",
+            tokoModel = Toko("",
                 getName,
-                harga,
                 "",
                 getDeskripsi,
-                auth.currentUser?.uid
-            )
-            uploadCatering()
+                getAlamat)
+            uploadToko()
         }
     }
 
-    fun uploadCatering(){
+    fun uploadToko(){
         showLoading(this)
 
         if (fileUri != null){
@@ -130,8 +128,8 @@ class AddCateringActivity : BaseActivity(), PermissionHelper.PermissionListener 
                         //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAu.getInstance().getCurrentUser().getUid());
                         val url = downloadUri!!.toString()
                         Log.d(TAG_SIMPAN,"download URL : "+ downloadUri.toString())// This is the one you should store
-                        cateringModel.foto = url
-                        saveCatering()
+                        tokoModel.foto = url
+                        saveToko()
                     } else {
                         dismissLoading()
                         showErrorMessage("Terjadi kesalahan, coba lagi nanti")
@@ -150,14 +148,14 @@ class AddCateringActivity : BaseActivity(), PermissionHelper.PermissionListener 
 
     }
 
-    fun saveCatering(){
+    fun saveToko(){
         pDialogLoading.setTitleText("menyimpan data..")
         showInfoMessage("Sedang menyimpan ke database..")
-        cateringRef.document().set(cateringModel).addOnCompleteListener{
+        tokoRef.document().set(tokoModel).addOnCompleteListener{
             task ->
             dismissLoading()
             if (task.isSuccessful){
-                showSuccessMessage("Data catering berhasil ditambahkan")
+                showSuccessMessage("Data toko berhasil ditambahkan")
                 onBackPressed()
             }else{
                 showLongErrorMessage("Penyimpanan data gagal")

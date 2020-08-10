@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailTendaActivity
 import com.tapisdev.forumjualburung.model.Tenda
-import kotlinx.android.synthetic.main.row_catering.view.*
+import kotlinx.android.synthetic.main.row_toko.view.*
 import java.io.Serializable
 
 class AdapterTenda(private val list:ArrayList<Tenda>) : RecyclerView.Adapter<AdapterTenda.Holder>(){
@@ -23,7 +23,7 @@ class AdapterTenda(private val list:ArrayList<Tenda>) : RecyclerView.Adapter<Ada
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
-        holder.view.tvCateringName.text = list?.get(position)?.nama
+       /* holder.view.tvCateringName.text = list?.get(position)?.nama
         holder.view.tvDeskripsi.text = list?.get(position)?.deksripsi
 
         Glide.with(holder.view.ivFoodCart.context)
@@ -35,7 +35,7 @@ class AdapterTenda(private val list:ArrayList<Tenda>) : RecyclerView.Adapter<Ada
             val i = Intent(holder.view.lineCatering.context, DetailTendaActivity::class.java)
             i.putExtra("tenda",list.get(position) as Serializable)
             holder.view.lineCatering.context.startActivity(i)
-        }
+        }*/
 
     }
 

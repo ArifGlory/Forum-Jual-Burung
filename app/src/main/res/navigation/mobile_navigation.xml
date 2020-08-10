@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.tapisdev.forumjualburung.activity.admin.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_admin_catering">
+        tools:layout="@layout/fragment_admin_toko">
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"

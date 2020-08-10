@@ -17,7 +17,7 @@ import com.makeramen.roundedimageview.RoundedImageView
 import com.tapisdev.forumjualburung.MainActivity
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
-import com.tapisdev.forumjualburung.fragment.AdminCateringFragment
+import com.tapisdev.forumjualburung.fragment.AdminTokoFragment
 import com.tapisdev.forumjualburung.fragment.AdminPesananFragment
 import com.tapisdev.forumjualburung.fragment.AdminTendaFragment
 import com.tapisdev.forumjualburung.model.UserPreference
@@ -59,7 +59,7 @@ class DashboardAdminActivity : BaseActivity(),
             startActivity(i)
         }
 
-        val fragment = AdminCateringFragment.newInstance()
+        val fragment = AdminTokoFragment.newInstance()
         addFragment(fragment)
 
 
@@ -83,15 +83,15 @@ class DashboardAdminActivity : BaseActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.nav_catering -> {
-                val fragment = AdminCateringFragment.newInstance()
+            R.id.nav_toko -> {
+                val fragment = AdminTokoFragment.newInstance()
                 addFragment(fragment)
             }
-            R.id.nav_tenda -> {
+            R.id.nav_informasi -> {
                 val fragment = AdminTendaFragment.newInstance()
                 addFragment(fragment)
             }
-            R.id.nav_pesanan -> {
+            R.id.nav_tutorial -> {
                 val fragment = AdminPesananFragment.newInstance()
                 addFragment(fragment)
             }

@@ -5,17 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_catering"
-            android:icon="@drawable/ic_cake_black_24dp"
-            android:title="Data Catering" />
-        <item
-            android:id="@+id/nav_tenda"
+            android:id="@+id/nav_toko"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Data Tenda" />
+            android:title="Data Toko" />
         <item
-            android:id="@+id/nav_pesanan"
-            android:icon="@drawable/ic_add_shopping_cart_black_24dp"
-            android:title="Data Pesanan" />
+            android:id="@+id/nav_informasi"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="Data Informasi" />
+        <item
+            android:id="@+id/nav_tutorial"
+            android:icon="@drawable/ic_playlist_add_check_black_24dp"
+            android:title="Data Tutorial" />
         <item
             android:id="@+id/nav_logout"
             android:title="Logout" />
