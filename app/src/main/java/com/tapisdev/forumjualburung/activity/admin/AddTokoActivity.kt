@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -12,7 +14,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
-import com.tapisdev.forumjualburung.model.Catering
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.util.PermissionHelper
 import kotlinx.android.synthetic.main.activity_add_toko.*
@@ -20,12 +21,16 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
 
+
 class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
 
     var TAG_SIMPAN = "simpanToko"
+    var alamat = "none"
+    var latlon = "none"
     lateinit var tokoModel : Toko
 
     private val PICK_IMAGE_REQUEST = 71
+    private val PLACE_PICKER_REQUEST = 1
     private var filePath: Uri? = null
     private var firebaseStore: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
@@ -43,13 +48,18 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
         permissionHelper = PermissionHelper(this)
         permissionHelper.setPermissionListener(this)
 
+
         ivCatering.setOnClickListener {
             launchGallery()
         }
         tvAdd.setOnClickListener {
             checkValidation()
         }
+        tvChooseLocation.setOnClickListener {
+
+        }
     }
+
 
     private fun launchGallery() {
         var listPermissions: MutableList<String> = ArrayList()
@@ -77,6 +87,33 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
         }
     }
 
+    private fun getCompleteAddressString(
+        LATITUDE: Double,
+        LONGITUDE: Double
+    ): String? {
+        var strAdd = ""
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            val addresses: List<Address>? =
+                geocoder.getFromLocation(LATITUDE, LONGITUDE, 1)
+            if (addresses != null) {
+                val returnedAddress: Address = addresses[0]
+                val strReturnedAddress = StringBuilder("")
+                for (i in 0..returnedAddress.getMaxAddressLineIndex()) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n")
+                }
+                strAdd = strReturnedAddress.toString()
+                Log.d("address", strReturnedAddress.toString())
+            } else {
+                Log.d("address", "No Address returned!")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.d("address", "Canont get Address!")
+        }
+        return strAdd
+    }
+
     fun checkValidation(){
         var getName = edFullName.text.toString()
         var getAlamat = edAlamat.text.toString()
@@ -93,7 +130,8 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
                 getName,
                 "",
                 getDeskripsi,
-                getAlamat)
+                getAlamat,
+                latlon)
             uploadToko()
         }
     }

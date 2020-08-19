@@ -67,27 +67,10 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/edAlamat"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@id/edFullName"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/bg_editfield"
-            android:hint="Alamat"
-            android:inputType="textMultiLine"
-            android:imeOptions="actionGo"
-            android:paddingLeft="10sp"
-            android:paddingRight="10sp"
-            android:textSize="14sp" />
-
-
-        <EditText
             android:id="@+id/edDeskripsi"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_below="@id/edAlamat"
+            android:layout_below="@id/edFullName"
             android:layout_marginLeft="10sp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
@@ -99,12 +82,58 @@
             android:paddingRight="10sp"
             android:textSize="14sp" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10sp"
+            android:layout_below="@id/edDeskripsi"
+            android:id="@+id/lineAlamat">
+
+            <EditText
+                android:id="@+id/edAlamat"
+                android:layout_toLeftOf="@+id/tvChooseLocation"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/bg_editfield"
+                android:hint="Alamat"
+                android:enabled="false"
+                android:inputType="textMultiLine"
+                android:imeOptions="actionGo"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvChooseLocation"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_editfield"
+                android:backgroundTint="@color/light_orange"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="Pilih Lokasi"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+
+
+
         <TextView
             android:id="@+id/tvAdd"
             android:fontFamily="@font/roboto_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edDeskripsi"
+            android:layout_below="@id/lineAlamat"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10sp"
             android:layout_marginTop="15dp"
