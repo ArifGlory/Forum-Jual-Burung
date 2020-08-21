@@ -49,8 +49,8 @@
                         android:text="Sandwich"
                         fontPath="@string/font_bold"
                         android:fontFamily="@font/roboto_medium"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
                         tools:ignore="MissingPrefix" />
                 </RelativeLayout>
                 <RelativeLayout

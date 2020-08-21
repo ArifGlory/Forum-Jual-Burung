@@ -15,19 +15,19 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
-import com.tapisdev.forumjualburung.model.Tenda
+import com.tapisdev.forumjualburung.model.Informasi
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_detail_tenda.*
+import kotlinx.android.synthetic.main.activity_detail_informasi.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.ArrayList
 
-class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener {
+class DetailInformasiActivity : BaseActivity(), PermissionHelper.PermissionListener {
 
-    lateinit var tenda : Tenda
+    lateinit var informasi : Informasi
     var state = "view"
-    var TAG_DELETE = "deletetenda"
-    var TAG_EDIT = "edittenda"
+    var TAG_DELETE = "deleteinformasi"
+    var TAG_EDIT = "editinformasi"
     lateinit var i : Intent
 
     private val PICK_IMAGE_REQUEST = 71
@@ -39,10 +39,10 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_tenda)
+        setContentView(R.layout.activity_detail_informasi)
 
         i = intent
-        tenda = i.getSerializableExtra("tenda") as Tenda
+        informasi = i.getSerializableExtra("informasi") as Informasi
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
         permissionHelper = PermissionHelper(this)
@@ -60,7 +60,7 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
                 .setConfirmClickListener { sDialog ->
                     sDialog.dismissWithAnimation()
                     showLoading(this)
-                    tendaRef.document(tenda.tendaId.toString()).delete().addOnSuccessListener {
+                    informasiRef.document(informasi.informasiId.toString()).delete().addOnSuccessListener {
                         dismissLoading()
                         showSuccessMessage("Data berhasil dihapus")
                         onBackPressed()
@@ -90,30 +90,24 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
     }
 
     fun checkValidation(){
-        var getName = edFullName.text.toString()
-        var getHarga = edHarga.text.toString()
+        var getName = edTitle.text.toString()
         var getDeskripsi = edDeskripsi.text.toString()
 
         if (getName.equals("") || getName.length == 0){
-            showErrorMessage("Nama Belum diisi")
-        } else if (getHarga.equals("") || getHarga.length == 0){
-            showErrorMessage("Harga Belum diisi")
+            showErrorMessage("Judul Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
         }else if (fileUri == null) {
-            val hrg = Integer.parseInt(getHarga)
-            updateDataOnly(getName,hrg,getDeskripsi)
+            updateDataOnly(getName,getDeskripsi)
         }else{
-            val hrg = Integer.parseInt(getHarga)
-            uploadAndUpdate(getName,hrg,getDeskripsi)
+            uploadAndUpdate(getName,getDeskripsi)
         }
     }
 
-    fun updateDataOnly(name : String,harga : Int,deskripsi : String){
+    fun updateDataOnly(name : String,deskripsi : String){
         showLoading(this)
-        tendaRef.document(tenda.tendaId.toString()).update("nama",name)
-        tendaRef.document(tenda.tendaId.toString()).update("harga",harga)
-        tendaRef.document(tenda.tendaId.toString()).update("deksripsi",deskripsi).addOnCompleteListener { task ->
+        informasiRef.document(informasi.informasiId.toString()).update("judul",name)
+        informasiRef.document(informasi.informasiId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
             dismissLoading()
             if (task.isSuccessful){
                 showSuccessMessage("Ubah data berhasil")
@@ -125,7 +119,7 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
         }
     }
 
-    fun uploadAndUpdate(name : String,harga : Int,deskripsi : String){
+    fun uploadAndUpdate(name : String,deskripsi : String){
         showLoading(this)
         if (fileUri != null){
             val baos = ByteArrayOutputStream()
@@ -151,10 +145,9 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
                         val url = downloadUri!!.toString()
                         Log.d(TAG_EDIT,"download URL : "+ downloadUri.toString())// This is the one you should store
 
-                        tendaRef.document(tenda.tendaId.toString()).update("nama",name)
-                        tendaRef.document(tenda.tendaId.toString()).update("harga",harga)
-                        tendaRef.document(tenda.tendaId.toString()).update("foto",url)
-                        tendaRef.document(tenda.tendaId.toString()).update("deksripsi",deskripsi).addOnCompleteListener { task ->
+                        informasiRef.document(informasi.informasiId.toString()).update("judul",name)
+                        informasiRef.document(informasi.informasiId.toString()).update("foto",url)
+                        informasiRef.document(informasi.informasiId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
                             dismissLoading()
                             if (task.isSuccessful){
                                 showSuccessMessage("Ubah data berhasil")
@@ -182,18 +175,16 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
 
     fun updateUI(){
         if (state.equals("view")){
-            edFullName.setText(tenda.nama)
-            edHarga.setText(tenda.harga.toString())
-            edDeskripsi.setText(tenda.deksripsi)
+            edTitle.setText(informasi.judul)
+            edDeskripsi.setText(informasi.deskripsi)
             tvHintFoto.visibility = View.INVISIBLE
             tvSaveEdit.visibility = View.INVISIBLE
 
             Glide.with(this)
-                .load(tenda.foto)
+                .load(informasi.foto)
                 .into(ivCatering)
 
-            edFullName.isEnabled = false
-            edHarga.isEnabled = false
+            edTitle.isEnabled = false
             edDeskripsi.isEnabled = false
             ivCatering.isEnabled = false
             tvSaveEdit.isEnabled = false
@@ -201,8 +192,7 @@ class DetailTendaActivity : BaseActivity(), PermissionHelper.PermissionListener 
             tvHintFoto.visibility = View.VISIBLE
             tvSaveEdit.visibility = View.VISIBLE
 
-            edFullName.isEnabled = true
-            edHarga.isEnabled = true
+            edTitle.isEnabled = true
             edDeskripsi.isEnabled = true
             ivCatering.isEnabled = true
             tvSaveEdit.isEnabled= true

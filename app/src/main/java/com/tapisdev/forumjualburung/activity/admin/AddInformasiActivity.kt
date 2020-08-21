@@ -12,10 +12,10 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
+import com.tapisdev.forumjualburung.model.Informasi
 import com.tapisdev.forumjualburung.model.Tenda
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_add_tenda.*
-import kotlinx.android.synthetic.main.activity_add_toko.*
+import kotlinx.android.synthetic.main.activity_add_informasi.*
 import kotlinx.android.synthetic.main.activity_add_toko.edDeskripsi
 import kotlinx.android.synthetic.main.activity_add_toko.edFullName
 import kotlinx.android.synthetic.main.activity_add_toko.ivCatering
@@ -24,10 +24,10 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.ArrayList
 
-class AddTendaActivity : BaseActivity(),PermissionHelper.PermissionListener {
+class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
-    var TAG_SIMPAN = "simpanTenda"
-    lateinit var tendaModel : Tenda
+    var TAG_SIMPAN = "simpanInformasi"
+    lateinit var informasi : Informasi
 
     private val PICK_IMAGE_REQUEST = 71
     private var filePath: Uri? = null
@@ -40,7 +40,7 @@ class AddTendaActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_tenda)
+        setContentView(R.layout.activity_add_informasi)
 
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
@@ -82,30 +82,25 @@ class AddTendaActivity : BaseActivity(),PermissionHelper.PermissionListener {
     }
 
     fun checkValidation(){
-        var getName = edFullName.text.toString()
-        var getHarga = edHarga.text.toString()
+        var getTitle = edTitle.text.toString()
         var getDeskripsi = edDeskripsi.text.toString()
 
-        if (getName.equals("") || getName.length == 0){
+        if (getTitle.equals("") || getTitle.length == 0){
             showErrorMessage("Nama Belum diisi")
-        } else if (getHarga.equals("") || getHarga.length == 0){
-            showErrorMessage("Harga Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
         }else {
-            var harga = Integer.parseInt(getHarga)
-            tendaModel = Tenda("",
-                getName,
-                harga,
+            informasi = Informasi("",
+                getTitle,
                 "",
                 getDeskripsi,
                 auth.currentUser?.uid
             )
-            uploadTenda()
+            uploadInformasi()
         }
     }
 
-    fun uploadTenda(){
+    fun uploadInformasi(){
         showLoading(this)
 
         if (fileUri != null){
@@ -135,8 +130,8 @@ class AddTendaActivity : BaseActivity(),PermissionHelper.PermissionListener {
                         //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAu.getInstance().getCurrentUser().getUid());
                         val url = downloadUri!!.toString()
                         Log.d(TAG_SIMPAN,"download URL : "+ downloadUri.toString())// This is the one you should store
-                        tendaModel.foto = url
-                        saveTenda()
+                        informasi.foto = url
+                        saveInformasi()
                     } else {
                         dismissLoading()
                         showErrorMessage("Terjadi kesalahan, coba lagi nanti")
@@ -155,14 +150,14 @@ class AddTendaActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
     }
 
-    fun saveTenda(){
+    fun saveInformasi(){
         pDialogLoading.setTitleText("menyimpan data..")
         showInfoMessage("Sedang menyimpan ke database..")
-        tendaRef.document().set(tendaModel).addOnCompleteListener{
+        informasiRef.document().set(informasi).addOnCompleteListener{
                 task ->
             dismissLoading()
             if (task.isSuccessful){
-                showSuccessMessage("Data tenda berhasil ditambahkan")
+                showSuccessMessage("Data  berhasil ditambahkan")
                 onBackPressed()
             }else{
                 showLongErrorMessage("Penyimpanan data gagal")

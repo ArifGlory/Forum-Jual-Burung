@@ -28,6 +28,7 @@ open class BaseActivity : AppCompatActivity() {
     val pesanananRef = myDB.collection("pesanan")
     val detailpesananRef = myDB.collection("detail_pesanan")
     val tokoRef = myDB.collection("toko")
+    val informasiRef = myDB.collection("informasi")
 
     override fun setContentView(view: View?) {
         super.setContentView(view)

@@ -13,7 +13,7 @@ import com.tapisdev.forumjualburung.adapter.AdapterTendaUser
 import com.tapisdev.forumjualburung.base.BaseFragment
 import com.tapisdev.forumjualburung.model.SharedVariable
 import com.tapisdev.forumjualburung.model.Tenda
-import kotlinx.android.synthetic.main.fragment_admin_tenda.*
+import kotlinx.android.synthetic.main.fragment_admin_informasi.*
 
 class TabTendaFragment : BaseFragment() {
 

@@ -38,8 +38,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".activity.LokasiTokoActivity"
+            android:label="Lokasi Toko"></activity>
+        <activity
             android:name=".activity.MapsActivity"
-            android:label="Pilih Lokasi Toko"></activity>
+            android:label="Pilih Lokasi Toko" />
         <activity
             android:name=".activity.MaintenanceActivity"
             android:label="Under Maintenance" />
@@ -57,14 +60,14 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.admin.DetailTendaActivity"
-            android:label="Detail Tenda" />
+            android:name=".activity.admin.DetailInformasiActivity"
+            android:label="Detail Informasi" />
         <activity
-            android:name=".activity.admin.AddTendaActivity"
+            android:name=".activity.admin.AddInformasiActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.DetailTokoActivity"
-            android:label="Detail Catering" />
+            android:label="Detail Toko" />
         <activity
             android:name=".activity.admin.EditProfilAdminActivity"
             android:theme="@style/AppTheme.NoActionBar" />

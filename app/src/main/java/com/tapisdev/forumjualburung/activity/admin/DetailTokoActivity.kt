@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,16 +16,20 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
+import com.tapisdev.forumjualburung.activity.LokasiTokoActivity
+import com.tapisdev.forumjualburung.activity.MapsActivity
 import com.tapisdev.forumjualburung.base.BaseActivity
+import com.tapisdev.forumjualburung.model.SharedVariable
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.util.PermissionHelper
+import kotlinx.android.synthetic.main.activity_add_toko.*
 import kotlinx.android.synthetic.main.activity_detail_toko.*
 import kotlinx.android.synthetic.main.activity_detail_toko.edDeskripsi
 import kotlinx.android.synthetic.main.activity_detail_toko.edFullName
 import kotlinx.android.synthetic.main.activity_detail_toko.edAlamat
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.util.ArrayList
+import java.util.*
 
 class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
@@ -32,6 +38,8 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
     var TAG_DELETE = "deleteToko"
     var TAG_EDIT = "editToko"
     lateinit var i : Intent
+    var alamat = "none"
+    var latlon = "none"
 
     private val PICK_IMAGE_REQUEST = 71
     private var filePath: Uri? = null
@@ -87,6 +95,15 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
         ivToko.setOnClickListener {
             launchGallery()
         }
+        tvEditLokasi.setOnClickListener {
+            val i = Intent(this, MapsActivity::class.java)
+            startActivity(i)
+        }
+        tvCekLokasi.setOnClickListener {
+            val i = Intent(this, LokasiTokoActivity::class.java)
+            i.putExtra("latlon",toko.latlon)
+            startActivity(i)
+        }
 
 
         updateUI()
@@ -100,7 +117,7 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
         if (getName.equals("") || getName.length == 0){
             showErrorMessage("Nama Belum diisi")
         } else if (getAlamat.equals("") || getAlamat.length == 0){
-            showErrorMessage("Harga Belum diisi")
+            showErrorMessage("Alamat Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
         }else if (fileUri == null) {
@@ -110,10 +127,38 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
         }
     }
 
+    private fun getCompleteAddressString(
+        LATITUDE: Double,
+        LONGITUDE: Double
+    ): String? {
+        var strAdd = ""
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            val addresses: List<Address>? =
+                geocoder.getFromLocation(LATITUDE, LONGITUDE, 1)
+            if (addresses != null) {
+                val returnedAddress: Address = addresses[0]
+                val strReturnedAddress = StringBuilder("")
+                for (i in 0..returnedAddress.getMaxAddressLineIndex()) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n")
+                }
+                strAdd = strReturnedAddress.toString()
+                Log.d("address", strReturnedAddress.toString())
+            } else {
+                Log.d("address", "No Address returned!")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.d("address", "Canont get Address!")
+        }
+        return strAdd
+    }
+
     fun updateDataOnly(name : String,alamat : String,deskripsi : String){
         showLoading(this)
         tokoRef.document(toko.tokoId.toString()).update("nama",name)
         tokoRef.document(toko.tokoId.toString()).update("alamat",alamat)
+        tokoRef.document(toko.tokoId.toString()).update("latlon",toko.latlon)
         tokoRef.document(toko.tokoId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
             dismissLoading()
             if (task.isSuccessful){
@@ -154,6 +199,7 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
                         tokoRef.document(toko.tokoId.toString()).update("nama",name)
                         tokoRef.document(toko.tokoId.toString()).update("alamat",alamat)
+                        tokoRef.document(toko.tokoId.toString()).update("latlon",toko.latlon)
                         tokoRef.document(toko.tokoId.toString()).update("foto",url)
                         tokoRef.document(toko.tokoId.toString()).update("deskripsi",deskripsi).addOnCompleteListener { task ->
                             dismissLoading()
@@ -198,15 +244,18 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             edDeskripsi.isEnabled = false
             ivToko.isEnabled = false
             tvSaveEdit.isEnabled = false
+            tvEditLokasi.isEnabled = false
         }else if (state.equals("edit")){
             tvHintFoto.visibility = View.VISIBLE
             tvSaveEdit.visibility = View.VISIBLE
+            tvEditLokasi.visibility = View.VISIBLE
 
             edFullName.isEnabled = true
             edAlamat.isEnabled = true
             edDeskripsi.isEnabled = true
             ivToko.isEnabled = true
             tvSaveEdit.isEnabled= true
+            tvEditLokasi.isEnabled= true
         }
     }
 
@@ -240,6 +289,18 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (SharedVariable.lokasiToko.latitude != 0.0){
+            latlon = ""+ SharedVariable.lokasiToko.latitude+","+ SharedVariable.lokasiToko.longitude
+            alamat = getCompleteAddressString(SharedVariable.lokasiToko.latitude, SharedVariable.lokasiToko.longitude).toString()
+            edAlamat.setText(alamat)
+
+            toko.latlon = latlon
+            toko.alamat = alamat
         }
     }
 }

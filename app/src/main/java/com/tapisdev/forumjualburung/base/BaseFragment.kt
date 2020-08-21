@@ -25,6 +25,7 @@ open class BaseFragment : Fragment() {
     val tokoRef = myDB.collection("toko")
     val cateringRef = myDB.collection("catering")
     val tendaRef = myDB.collection("tenda")
+    val informasiRef = myDB.collection("informasi")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

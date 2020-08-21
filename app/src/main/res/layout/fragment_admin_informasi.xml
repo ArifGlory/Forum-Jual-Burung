@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AdminTendaFragment">
+    tools:context=".fragment.AdminInformasiFragment">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -13,13 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
-        android:text="Tenda Saya"
+        android:text="Data Informasi"
         android:textColor="@color/light_orange"
         android:textSize="20sp"
         tools:ignore="MissingPrefix" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTenda"
+        android:id="@+id/rvInformasi"
         android:layout_below="@+id/tvTitle"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
