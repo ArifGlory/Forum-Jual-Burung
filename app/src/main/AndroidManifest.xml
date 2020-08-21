@@ -39,7 +39,7 @@
 
         <activity
             android:name=".activity.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="Pilih Lokasi Toko"></activity>
         <activity
             android:name=".activity.MaintenanceActivity"
             android:label="Under Maintenance" />

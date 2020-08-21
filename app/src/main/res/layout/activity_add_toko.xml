@@ -100,7 +100,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/bg_editfield"
                 android:hint="Alamat"
-                android:enabled="false"
+                android:enabled="true"
                 android:inputType="textMultiLine"
                 android:imeOptions="actionGo"
                 android:paddingLeft="10sp"

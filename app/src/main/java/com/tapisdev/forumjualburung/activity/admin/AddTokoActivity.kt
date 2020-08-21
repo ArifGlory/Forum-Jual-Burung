@@ -13,7 +13,9 @@ import android.util.Log
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
+import com.tapisdev.forumjualburung.activity.MapsActivity
 import com.tapisdev.forumjualburung.base.BaseActivity
+import com.tapisdev.forumjualburung.model.SharedVariable
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.util.PermissionHelper
 import kotlinx.android.synthetic.main.activity_add_toko.*
@@ -56,7 +58,8 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
             checkValidation()
         }
         tvChooseLocation.setOnClickListener {
-
+            val i = Intent(this,MapsActivity::class.java)
+            startActivity(i)
         }
     }
 
@@ -122,10 +125,15 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
         if (getName.equals("") || getName.length == 0){
             showErrorMessage("Nama Belum diisi")
         } else if (getAlamat.equals("") || getAlamat.length == 0){
-            showErrorMessage("Harga Belum diisi")
+            showErrorMessage("Alamat Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
-        }else {
+        }else if (latlon.equals("none")){
+            showErrorMessage("Lokasi belum dipilih")
+        }else if(fotoBitmap == null){
+            showErrorMessage("Gambar Toko belum dipilih")
+        }
+        else {
             tokoModel = Toko("",
                 getName,
                 "",
@@ -207,6 +215,16 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (SharedVariable.lokasiToko.latitude != 0.0){
+            latlon = ""+SharedVariable.lokasiToko.latitude+","+SharedVariable.lokasiToko.longitude
+            alamat = getCompleteAddressString(SharedVariable.lokasiToko.latitude,SharedVariable.lokasiToko.longitude).toString()
+            edAlamat.setText(alamat)
+        }
+
     }
 
 }
