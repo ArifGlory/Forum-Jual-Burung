@@ -104,6 +104,19 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             i.putExtra("latlon",toko.latlon)
             startActivity(i)
         }
+        ivBack.setOnClickListener {
+            onBackPressed()
+        }
+        ivListBurung.setOnClickListener {
+            val i = Intent(this,AdminListBurungActivity::class.java)
+            i.putExtra("tokoId",toko.tokoId)
+            startActivity(i)
+        }
+        ivAddBurung.setOnClickListener {
+            val i = Intent(this,AddBurungActivity::class.java)
+            i.putExtra("tokoId",toko.tokoId)
+            startActivity(i)
+        }
 
 
         updateUI()

@@ -41,6 +41,11 @@
         <item>Penjual</item>
         <item>Pengguna</item>
     </string-array>
+    <string-array name="listKondisiBurung">
+        <item>Pilih Kondisi</item>
+        <item>Sehat</item>
+        <item>Sakit</item>
+    </string-array>
     <string name="title_activity_dashboard_admin">DashboardAdminActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

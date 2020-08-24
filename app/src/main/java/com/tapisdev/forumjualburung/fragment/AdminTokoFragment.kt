@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.AddTokoActivity
@@ -20,6 +21,7 @@ class AdminTokoFragment : BaseFragment() {
 
     lateinit var rvToko: RecyclerView
     lateinit var fab : FloatingActionButton
+    lateinit var animation_view : LottieAnimationView
     var TAG_GET_CATERING = "getCatering"
     lateinit var adapter:AdapterToko
 
@@ -35,6 +37,7 @@ class AdminTokoFragment : BaseFragment() {
         val root = inflater.inflate(R.layout.fragment_admin_toko, container, false)
         rvToko = root.findViewById(R.id.rvToko)
         fab = root.findViewById(R.id.fab)
+        animation_view = root.findViewById(R.id.animation_view)
 
         adapter = AdapterToko(listToko)
 

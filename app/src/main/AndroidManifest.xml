@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tapisdev.forumjualburung">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -24,7 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-
+        <activity android:name=".activity.admin.AdminListBurungActivity"
+            android:label="Data Burung di Toko ini"></activity>
+        <activity
+            android:name=".activity.admin.AddBurungActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -39,7 +42,7 @@
 
         <activity
             android:name=".activity.LokasiTokoActivity"
-            android:label="Lokasi Toko"></activity>
+            android:label="Lokasi Toko" />
         <activity
             android:name=".activity.MapsActivity"
             android:label="Pilih Lokasi Toko" />
@@ -67,7 +70,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.DetailTokoActivity"
-            android:label="Detail Toko" />
+            android:label="Detail Toko"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.EditProfilAdminActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -6,6 +6,53 @@
     android:background="@color/gray_orange">
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginTop="5dp"
+        android:id="@+id/rlToolBar">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorPrimary"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back"
+            android:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ivListBurung"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@+id/ivAddBurung"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
+            android:tint="@color/white"
+            android:src="@drawable/ic_playlist_add_check_black_24dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/ivAddBurung"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
+            android:tint="@color/white"
+            android:src="@drawable/ic_add_white_24dp"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/rlToolBar"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/lineButtonGroup">
         <ImageView
