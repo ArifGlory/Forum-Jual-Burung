@@ -12,34 +12,36 @@ import com.tapisdev.forumjualburung.activity.admin.DetailBurungActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailTokoActivity
 import com.tapisdev.forumjualburung.model.Burung
 import com.tapisdev.forumjualburung.model.Toko
+import com.tapisdev.forumjualburung.model.Tutorial
 import kotlinx.android.synthetic.main.row_burung.view.*
 import kotlinx.android.synthetic.main.row_toko.view.*
 import kotlinx.android.synthetic.main.row_toko.view.lineToko
+import kotlinx.android.synthetic.main.row_tutorial.view.*
 import java.io.Serializable
 
-class AdapterBurung(private val list:ArrayList<Burung>) : RecyclerView.Adapter<AdapterBurung.Holder>(){
+class AdapterTutorial(private val list:ArrayList<Tutorial>) : RecyclerView.Adapter<AdapterTutorial.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_burung,parent,false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_tutorial,parent,false))
     }
 
     override fun getItemCount(): Int = list?.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
-        holder.view.tvNamaBurung.text = list?.get(position)?.nama
-        holder.view.tvHarga.text = "Rp. "+list?.get(position)?.harga
-        holder.view.tvKondisi.text = "Kondisi "+list?.get(position)?.kondisi
+        holder.view.tvNama.text = list?.get(position)?.nama
+        holder.view.tvDeskripsi.text = list?.get(position)?.deskripsi
+        holder.view.tvTipe.text = "Tutorial berbentuk "+list?.get(position)?.tipe
 
-        Glide.with(holder.view.ivBurung.context)
+        Glide.with(holder.view.ivTutorial.context)
             .load(list?.get(position)?.foto)
-            .into(holder.view.ivBurung)
+            .into(holder.view.ivTutorial)
 
         holder.view.lineToko.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineToko.context, DetailBurungActivity::class.java)
-            i.putExtra("burung",list.get(position) as Serializable)
-            holder.view.lineToko.context.startActivity(i)
+           /* val i = Intent(holder.view.lineToko.context, DetailBurungActivity::class.java)
+            i.putExtra("tutorial",list.get(position) as Serializable)
+            holder.view.lineToko.context.startActivity(i)*/
         }
 
     }

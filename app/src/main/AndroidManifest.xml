@@ -23,8 +23,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.admin.AdminListBurungActivity"
-            android:label="Data Burung di Toko ini"></activity>
+        <activity android:name=".activity.admin.TambahTutorialActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity
+            android:name=".activity.admin.DetailBurungActivity"
+            android:label="Detail Burung" />
+        <activity
+            android:name=".activity.admin.AdminListBurungActivity"
+            android:label="Data Burung di Toko ini" />
         <activity
             android:name=".activity.admin.AddBurungActivity"
             android:theme="@style/AppTheme.NoActionBar" />

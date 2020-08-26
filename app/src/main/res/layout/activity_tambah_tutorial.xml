@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_orange">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rlRegistration">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/ivTutorial"
+            android:src="@drawable/ic_appicon"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:fontFamily="@font/roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:layout_below="@+id/ivCatering"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:text="Tap Untuk Mengubah Foto"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rlRegistration"
+        android:background="@drawable/bg_top_shap_10">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="Tambah Tutorial"
+            android:textColor="@color/light_orange"
+            android:textSize="15sp"
+            tools:ignore="MissingPrefix" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tvTitle"
+            android:popupBackground="@color/white"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:entries="@array/listTipeTutorial"
+            android:background="@drawable/et_background1"
+            android:id="@+id/spTipeTutorial"></Spinner>
+
+
+        <EditText
+            android:id="@+id/edNamaTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/spTipeTutorial"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Nama Tutorial"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+
+        <EditText
+            android:id="@+id/edDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edNamaTutorial"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:padding="10dp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Deskripsi Tutorial"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edUrlVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edDeskripsi"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:padding="10dp"
+            android:visibility="invisible"
+            android:background="@drawable/bg_editfield"
+            android:hint="URL Video (Youtube)"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tvAddTutorial"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edUrlVideo"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/light_orange"
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="Tambahkan"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            tools:ignore="MissingPrefix" />
+
+    </RelativeLayout>
+</RelativeLayout>

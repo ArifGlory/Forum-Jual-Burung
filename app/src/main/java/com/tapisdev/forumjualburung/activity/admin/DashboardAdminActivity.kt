@@ -18,7 +18,7 @@ import com.tapisdev.forumjualburung.MainActivity
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.fragment.AdminTokoFragment
-import com.tapisdev.forumjualburung.fragment.AdminPesananFragment
+import com.tapisdev.forumjualburung.fragment.AdminTutorialFragment
 import com.tapisdev.forumjualburung.fragment.AdminInformasiFragment
 import com.tapisdev.forumjualburung.model.UserPreference
 import kotlinx.android.synthetic.main.activity_dashboard_admin.*
@@ -92,7 +92,7 @@ class DashboardAdminActivity : BaseActivity(),
                 addFragment(fragment)
             }
             R.id.nav_tutorial -> {
-                val fragment = AdminPesananFragment.newInstance()
+                val fragment = AdminTutorialFragment.newInstance()
                 addFragment(fragment)
             }
             R.id.nav_logout -> {
