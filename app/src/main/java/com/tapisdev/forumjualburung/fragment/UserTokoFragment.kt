@@ -1,22 +1,17 @@
 package com.tapisdev.forumjualburung.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.tapisdev.forumjualburung.R
-import com.tapisdev.forumjualburung.activity.pengguna.KeranjangActivity
-import com.tapisdev.forumjualburung.adapter.AdapterPenyedia
 import com.tapisdev.forumjualburung.adapter.AdapterTokoUser
 import com.tapisdev.forumjualburung.base.BaseFragment
 import com.tapisdev.forumjualburung.model.Toko
-import com.tapisdev.forumjualburung.model.UserModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -36,7 +31,7 @@ class UserTokoFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_user_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_user_toko, container, false)
         rvToko = root.findViewById(R.id.rvToko)
         animation_view = root.findViewById(R.id.animation_view)
 

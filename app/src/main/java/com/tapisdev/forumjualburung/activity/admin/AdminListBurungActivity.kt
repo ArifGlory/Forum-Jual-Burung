@@ -54,7 +54,9 @@ class AdminListBurungActivity : BaseActivity() {
                 //Log.d(TAG_GET_CATERING, "Datanya : "+document.data)
                 var burung : Burung = document.toObject(Burung::class.java)
                 burung.burungId = document.id
-                listBurung.add(burung)
+                if (burung.idToko.equals(tokoId)){
+                    listBurung.add(burung)
+                }
             }
             if (listBurung.size == 0){
                 animation_view.setAnimation(R.raw.empty_box)

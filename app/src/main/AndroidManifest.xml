@@ -23,9 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.ShowVideoActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="fullSensor"></activity>
+        <activity android:name=".activity.pengguna.DetailBurungUserActivity"
+            android:label="Detail Burung"></activity>
+        <activity
+            android:name=".activity.ShowVideoActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.admin.DetailTutorialActivity" />
         <activity
             android:name=".activity.admin.TambahTutorialActivity"
@@ -67,7 +70,7 @@
             android:name=".activity.pengguna.KeranjangActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.pengguna.DetailPenyediaActivity"
+            android:name=".activity.pengguna.DetailTokoUserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.pengguna.HomeUserActivity"
