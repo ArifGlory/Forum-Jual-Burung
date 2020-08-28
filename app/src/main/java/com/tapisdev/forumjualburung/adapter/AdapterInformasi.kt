@@ -11,6 +11,8 @@ import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailInformasiActivity
 import com.tapisdev.forumjualburung.model.Informasi
 import com.tapisdev.forumjualburung.model.Tenda
+import com.tapisdev.forumjualburung.model.UserPreference
+import kotlinx.android.synthetic.main.row_burung.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.*
 import java.io.Serializable
 
@@ -20,9 +22,13 @@ class AdapterInformasi(private val list:ArrayList<Informasi>) : RecyclerView.Ada
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_informasi,parent,false))
     }
 
+    lateinit var mUserPref : UserPreference
+
     override fun getItemCount(): Int = list?.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+        mUserPref = UserPreference(holder.view.lineInformasi.context)
 
         holder.view.tvCateringName.text = list?.get(position)?.judul
         holder.view.tvDeskripsi.text = list?.get(position)?.deskripsi
@@ -33,9 +39,14 @@ class AdapterInformasi(private val list:ArrayList<Informasi>) : RecyclerView.Ada
 
         holder.view.lineInformasi.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineInformasi.context, DetailInformasiActivity::class.java)
-            i.putExtra("informasi",list.get(position) as Serializable)
-            holder.view.lineInformasi.context.startActivity(i)
+            if (mUserPref.getJenisUser().equals("admin")){
+                val i = Intent(holder.view.lineInformasi.context, DetailInformasiActivity::class.java)
+                i.putExtra("informasi",list.get(position) as Serializable)
+                holder.view.lineInformasi.context.startActivity(i)
+            }else{
+
+            }
+
         }
 
     }

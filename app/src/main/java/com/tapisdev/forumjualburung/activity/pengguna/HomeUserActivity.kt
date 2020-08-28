@@ -5,6 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.fragment.app.Fragment
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
+import com.tapisdev.forumjualburung.fragment.UserInformasiFragment
 import com.tapisdev.forumjualburung.fragment.UserTokoFragment
 import com.tapisdev.forumjualburung.fragment.UserProfilFragment
 import kotlinx.android.synthetic.main.activity_home_user.*
@@ -29,7 +30,9 @@ class HomeUserActivity : BaseActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_informasi -> {
-
+                val fragment = UserInformasiFragment.newInstance()
+                addFragment(fragment)
+                return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_tutorial -> {
 
