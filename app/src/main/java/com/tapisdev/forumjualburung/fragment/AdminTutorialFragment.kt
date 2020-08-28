@@ -90,4 +90,9 @@ class AdminTutorialFragment : BaseFragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getDataMyTutorial()
+    }
+
 }

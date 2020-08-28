@@ -106,7 +106,7 @@
             android:padding="10dp"
             android:visibility="invisible"
             android:background="@drawable/bg_editfield"
-            android:hint="URL Video (Youtube)"
+            android:hint="ID Video (Youtube)"
             android:inputType="textMultiLine"
             android:imeOptions="actionGo"
             android:paddingLeft="10sp"

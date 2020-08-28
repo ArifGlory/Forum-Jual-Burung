@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailBurungActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailTokoActivity
+import com.tapisdev.forumjualburung.activity.admin.DetailTutorialActivity
 import com.tapisdev.forumjualburung.model.Burung
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.model.Tutorial
@@ -39,9 +40,9 @@ class AdapterTutorial(private val list:ArrayList<Tutorial>) : RecyclerView.Adapt
 
         holder.view.lineToko.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-           /* val i = Intent(holder.view.lineToko.context, DetailBurungActivity::class.java)
+            val i = Intent(holder.view.lineToko.context, DetailTutorialActivity::class.java)
             i.putExtra("tutorial",list.get(position) as Serializable)
-            holder.view.lineToko.context.startActivity(i)*/
+            holder.view.lineToko.context.startActivity(i)
         }
 
     }

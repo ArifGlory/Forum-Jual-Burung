@@ -42,7 +42,7 @@ class DetailInformasiActivity : BaseActivity(), PermissionHelper.PermissionListe
         setContentView(R.layout.activity_detail_informasi)
 
         i = intent
-        informasi = i.getSerializableExtra("informasi") as Informasi
+                informasi = i.getSerializableExtra("informasi") as Informasi
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
         permissionHelper = PermissionHelper(this)
