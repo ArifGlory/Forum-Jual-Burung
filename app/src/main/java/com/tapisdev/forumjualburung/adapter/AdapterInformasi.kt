@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailInformasiActivity
+import com.tapisdev.forumjualburung.activity.pengguna.DetailInformasiUserActivity
 import com.tapisdev.forumjualburung.model.Informasi
 import com.tapisdev.forumjualburung.model.Tenda
 import com.tapisdev.forumjualburung.model.UserPreference
@@ -44,7 +45,9 @@ class AdapterInformasi(private val list:ArrayList<Informasi>) : RecyclerView.Ada
                 i.putExtra("informasi",list.get(position) as Serializable)
                 holder.view.lineInformasi.context.startActivity(i)
             }else{
-
+                val i = Intent(holder.view.lineInformasi.context, DetailInformasiUserActivity::class.java)
+                i.putExtra("informasi",list.get(position) as Serializable)
+                holder.view.lineInformasi.context.startActivity(i)
             }
 
         }

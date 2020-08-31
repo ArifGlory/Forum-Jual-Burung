@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/rlToolBar">
+
+        <ImageView
+            android:id="@+id/ivInformasi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
+            android:visibility="invisible"
+            android:layout_height="match_parent"
+            app:showFullScreenButton="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/trans_black" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlToolBar">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/cvFoodName"
+            app:cardCornerRadius="5dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Judul Informasi"
+                        android:textSize="14sp"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/tvJudul"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        tools:ignore="MissingPrefix" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cvFoodName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            android:id="@+id/cvFoodDetail"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Deksirpsi Informasi"
+                    android:textSize="13sp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/tvDeskripsiInformasi"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    tools:ignore="MissingPrefix" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

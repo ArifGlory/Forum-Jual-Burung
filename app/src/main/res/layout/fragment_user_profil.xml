@@ -61,37 +61,12 @@
             android:textSize="12sp"
             android:layout_centerInParent="true"
             fontPath="@string/font_medium"
-            android:text="Email"
-            tools:ignore="MissingPrefix" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/bg_onlycorner_gary"
-            android:id="@+id/edEmailAddress"
-            android:fontFamily="@font/roboto_medium"
-            android:textColor="@color/black"
-            android:paddingLeft="10dp"
-            android:hint="Email Address"
-            android:textSize="12sp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="5dp"
-            tools:ignore="MissingPrefix" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="12dp"
-            android:textSize="12sp"
-            android:layout_centerInParent="true"
-            fontPath="@string/font_medium"
             android:text="Nama"
             tools:ignore="MissingPrefix" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/bg_onlycorner_gary"
+            android:background="@drawable/bg_editfield"
             android:id="@+id/edUserName"
             android:fontFamily="@font/roboto_medium"
             android:textColor="@color/black"
@@ -116,17 +91,40 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/bg_onlycorner_gary"
+            android:background="@drawable/bg_editfield"
             android:id="@+id/edMobileNumber"
             android:fontFamily="@font/roboto_medium"
             android:textColor="@color/black"
             android:paddingLeft="10dp"
             android:hint="Mobile Number"
+            android:inputType="number"
             android:textSize="12sp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="5dp"
             tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/tvSaveEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spKondisi"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/light_orange"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="Simpan Perubahan"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            tools:ignore="MissingPrefix" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

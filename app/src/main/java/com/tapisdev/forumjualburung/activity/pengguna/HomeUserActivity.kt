@@ -8,6 +8,7 @@ import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.fragment.UserInformasiFragment
 import com.tapisdev.forumjualburung.fragment.UserTokoFragment
 import com.tapisdev.forumjualburung.fragment.UserProfilFragment
+import com.tapisdev.forumjualburung.fragment.UserTutorialFragment
 import kotlinx.android.synthetic.main.activity_home_user.*
 
 class HomeUserActivity : BaseActivity() {
@@ -35,7 +36,9 @@ class HomeUserActivity : BaseActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_tutorial -> {
-
+                val fragment = UserTutorialFragment.newInstance()
+                addFragment(fragment)
+                return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profil -> {
                 val fragment = UserProfilFragment.newInstance()

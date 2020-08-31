@@ -11,13 +11,17 @@ import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailBurungActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailTokoActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailTutorialActivity
+import com.tapisdev.forumjualburung.activity.pengguna.DetailTutorialUserActivity
 import com.tapisdev.forumjualburung.model.Burung
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.model.Tutorial
+import com.tapisdev.forumjualburung.model.UserPreference
 import kotlinx.android.synthetic.main.row_burung.view.*
+import kotlinx.android.synthetic.main.row_informasi.view.*
 import kotlinx.android.synthetic.main.row_toko.view.*
 import kotlinx.android.synthetic.main.row_toko.view.lineToko
 import kotlinx.android.synthetic.main.row_tutorial.view.*
+import kotlinx.android.synthetic.main.row_tutorial.view.tvDeskripsi
 import java.io.Serializable
 
 class AdapterTutorial(private val list:ArrayList<Tutorial>) : RecyclerView.Adapter<AdapterTutorial.Holder>(){
@@ -26,9 +30,13 @@ class AdapterTutorial(private val list:ArrayList<Tutorial>) : RecyclerView.Adapt
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_tutorial,parent,false))
     }
 
+    lateinit var mUserPref : UserPreference
+
     override fun getItemCount(): Int = list?.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+        mUserPref = UserPreference(holder.view.ivTutorial.context)
 
         holder.view.tvNama.text = list?.get(position)?.nama
         holder.view.tvDeskripsi.text = list?.get(position)?.deskripsi
@@ -40,9 +48,16 @@ class AdapterTutorial(private val list:ArrayList<Tutorial>) : RecyclerView.Adapt
 
         holder.view.lineToko.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineToko.context, DetailTutorialActivity::class.java)
-            i.putExtra("tutorial",list.get(position) as Serializable)
-            holder.view.lineToko.context.startActivity(i)
+            if (mUserPref.getJenisUser().equals("admin")){
+                val i = Intent(holder.view.lineToko.context, DetailTutorialActivity::class.java)
+                i.putExtra("tutorial",list.get(position) as Serializable)
+                holder.view.lineToko.context.startActivity(i)
+            }else{
+                val i = Intent(holder.view.lineToko.context, DetailTutorialUserActivity::class.java)
+                i.putExtra("tutorial",list.get(position) as Serializable)
+                holder.view.lineToko.context.startActivity(i)
+            }
+
         }
 
     }

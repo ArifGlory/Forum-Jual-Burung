@@ -23,8 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.pengguna.DetailBurungUserActivity"
-            android:label="Detail Burung"></activity>
+        <activity android:name=".activity.pengguna.DetailTutorialUserActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.pengguna.DetailInformasiUserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.pengguna.DetailBurungUserActivity"
+            android:label="Detail Burung" />
         <activity
             android:name=".activity.ShowVideoActivity"
             android:screenOrientation="fullSensor"
