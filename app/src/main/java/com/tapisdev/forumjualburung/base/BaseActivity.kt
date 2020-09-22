@@ -31,6 +31,7 @@ open class BaseActivity : AppCompatActivity() {
     val informasiRef = myDB.collection("informasi")
     val burungRef = myDB.collection("burung")
     val tutorialRef = myDB.collection("tutorial")
+    val diskusiRef = myDB.collection("diskusi")
 
     override fun setContentView(view: View?) {
         super.setContentView(view)

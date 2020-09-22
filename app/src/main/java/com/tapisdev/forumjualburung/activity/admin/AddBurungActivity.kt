@@ -19,6 +19,7 @@ import com.tapisdev.forumjualburung.model.Burung
 import com.tapisdev.forumjualburung.model.Informasi
 import com.tapisdev.forumjualburung.util.PermissionHelper
 import kotlinx.android.synthetic.main.activity_add_burung.*
+import kotlinx.android.synthetic.main.activity_add_diskusi.*
 import kotlinx.android.synthetic.main.activity_add_informasi.*
 import kotlinx.android.synthetic.main.activity_add_toko.*
 import kotlinx.android.synthetic.main.activity_add_toko.edDeskripsi

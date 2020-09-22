@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.pengguna.ListDiskusiActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="15dp"
+        android:id="@+id/rlToolBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Diskusi"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/ivAddDiskusi"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
+            android:tint="@color/white"
+            android:src="@drawable/ic_add_white_24dp"
+            tools:ignore="MissingConstraints" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_NevProfileName"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlToolBar"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:text="Diksusi Terbaru"
+        android:textColor="@color/black"
+        android:textSize="13dp"
+        tools:ignore="MissingPrefix" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_margin="15dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/water_loading"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDiskusiUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_NevProfileName"
+        android:layout_marginTop="5dp" />
+
+
+</RelativeLayout>

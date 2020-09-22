@@ -1,10 +1,11 @@
-package com.tapisdev.forumjualburung.activity.admin
+package com.tapisdev.forumjualburung.activity
 
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -12,20 +13,22 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
+import com.tapisdev.forumjualburung.model.Diskusi
 import com.tapisdev.forumjualburung.model.Informasi
+import com.tapisdev.forumjualburung.model.UserPreference
 import com.tapisdev.forumjualburung.util.PermissionHelper
-import kotlinx.android.synthetic.main.activity_add_informasi.*
-import kotlinx.android.synthetic.main.activity_add_toko.edDeskripsi
-import kotlinx.android.synthetic.main.activity_add_toko.ivCatering
-import kotlinx.android.synthetic.main.activity_add_toko.tvAdd
+import kotlinx.android.synthetic.main.activity_add_diskusi.*
+import kotlinx.android.synthetic.main.activity_add_toko.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.util.ArrayList
+import java.text.SimpleDateFormat
+import java.util.*
 
-class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener {
 
-    var TAG_SIMPAN = "simpanInformasi"
-    lateinit var informasi : Informasi
+class AddDiskusiActivity : BaseActivity(),PermissionHelper.PermissionListener {
+
+    var TAG_SIMPAN = "simpanDiskusi"
+    lateinit var diskusi : Diskusi
 
     private val PICK_IMAGE_REQUEST = 71
     private var filePath: Uri? = null
@@ -38,18 +41,48 @@ class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_informasi)
+        setContentView(R.layout.activity_add_diskusi)
+        mUserPref = UserPreference(this)
 
         storageReference = FirebaseStorage.getInstance().reference.child("images")
 
         permissionHelper = PermissionHelper(this)
         permissionHelper.setPermissionListener(this)
 
-        ivCatering.setOnClickListener {
+        ivDiskusi.setOnClickListener {
             launchGallery()
         }
-        tvAdd.setOnClickListener {
+        tvAddDiskusi.setOnClickListener {
             checkValidation()
+        }
+    }
+
+    fun checkValidation(){
+        var getTitle = edTitle.text.toString()
+        var getDeskripsi = edDeskripsiDiskusi.text.toString()
+
+        val date = getCurrentDateTime()
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val currentDate = sdf.format(date)
+
+        Log.d("dateNow",""+currentDate)
+
+        if (getTitle.equals("") || getTitle.length == 0){
+            showErrorMessage("Judul Belum diisi")
+        } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
+            showErrorMessage("Deskripsi Belum diisi")
+        }else if (fileUri == null){
+            showErrorMessage("Gambar belum dipilih")
+        }else {
+            diskusi = Diskusi("",
+                getTitle,
+                getDeskripsi,
+                auth.currentUser?.uid.toString(),
+                currentDate,
+                "",
+                mUserPref.getJenisUser(),
+                mUserPref.getName())
+            uploadDiskusi()
         }
     }
 
@@ -72,33 +105,14 @@ class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener 
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
                 fotoBitmap = bitmap
-                ivCatering.setImageBitmap(bitmap)
+                ivDiskusi.setImageBitmap(bitmap)
             } catch (e: IOException) {
                 e.printStackTrace()
             }
         }
     }
 
-    fun checkValidation(){
-        var getTitle = edTitle.text.toString()
-        var getDeskripsi = edDeskripsi.text.toString()
-
-        if (getTitle.equals("") || getTitle.length == 0){
-            showErrorMessage("Nama Belum diisi")
-        } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
-            showErrorMessage("Deskripsi Belum diisi")
-        }else {
-            informasi = Informasi("",
-                getTitle,
-                "",
-                getDeskripsi,
-                auth.currentUser?.uid
-            )
-            uploadInformasi()
-        }
-    }
-
-    fun uploadInformasi(){
+    fun uploadDiskusi(){
         showLoading(this)
 
         if (fileUri != null){
@@ -128,8 +142,8 @@ class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener 
                         //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAu.getInstance().getCurrentUser().getUid());
                         val url = downloadUri!!.toString()
                         Log.d(TAG_SIMPAN,"download URL : "+ downloadUri.toString())// This is the one you should store
-                        informasi.foto = url
-                        saveInformasi()
+                        diskusi.foto = url
+                        saveDiskusi()
                     } else {
                         dismissLoading()
                         showErrorMessage("Terjadi kesalahan, coba lagi nanti")
@@ -145,13 +159,12 @@ class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener 
             dismissLoading()
             showErrorMessage("Anda belum memilih file")
         }
-
     }
 
-    fun saveInformasi(){
+    fun saveDiskusi(){
         pDialogLoading.setTitleText("menyimpan data..")
         showInfoMessage("Sedang menyimpan ke database..")
-        informasiRef.document().set(informasi).addOnCompleteListener{
+        diskusiRef.document().set(diskusi).addOnCompleteListener{
                 task ->
             dismissLoading()
             if (task.isSuccessful){
@@ -163,12 +176,15 @@ class AddInformasiActivity : BaseActivity(),PermissionHelper.PermissionListener 
             }
         }
     }
-    
 
     override fun onPermissionCheckDone() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
     }
 }

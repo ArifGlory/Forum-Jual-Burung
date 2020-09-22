@@ -23,8 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.pengguna.ListInformasiUserActivity"
-            android:label="Informasi"></activity>
+        <activity android:name=".activity.AddDiskusiActivity"></activity>
+        <activity
+            android:name=".activity.pengguna.ListDiskusiActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.pengguna.ListInformasiUserActivity"
+            android:label="Informasi" />
         <activity
             android:name=".activity.pengguna.ListTokoActivity"
             android:label="Data Toko" />

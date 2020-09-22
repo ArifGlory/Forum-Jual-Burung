@@ -9,15 +9,10 @@ import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.LokasiTokoActivity
 import com.tapisdev.forumjualburung.adapter.AdapterBurung
-import com.tapisdev.forumjualburung.adapter.MyPagerAdapter
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.Burung
-import com.tapisdev.forumjualburung.model.SharedVariable
 import com.tapisdev.forumjualburung.model.Toko
-import com.tapisdev.forumjualburung.model.UserModel
-import kotlinx.android.synthetic.main.activity_admin_list_burung.*
 import kotlinx.android.synthetic.main.activity_detail_toko_user.*
-import kotlinx.android.synthetic.main.fragment_admin_informasi.*
 
 class DetailTokoUserActivity : BaseActivity() {
 

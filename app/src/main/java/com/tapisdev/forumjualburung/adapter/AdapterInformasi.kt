@@ -11,9 +11,7 @@ import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DetailInformasiActivity
 import com.tapisdev.forumjualburung.activity.pengguna.DetailInformasiUserActivity
 import com.tapisdev.forumjualburung.model.Informasi
-import com.tapisdev.forumjualburung.model.Tenda
 import com.tapisdev.forumjualburung.model.UserPreference
-import kotlinx.android.synthetic.main.row_burung.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.*
 import java.io.Serializable
 

@@ -23,6 +23,7 @@ import com.makeramen.roundedimageview.RoundedImageView
 import com.tapisdev.forumjualburung.MainActivity
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.pengguna.ListBurungUserActivity
+import com.tapisdev.forumjualburung.activity.pengguna.ListDiskusiActivity
 import com.tapisdev.forumjualburung.activity.pengguna.ListInformasiUserActivity
 import com.tapisdev.forumjualburung.activity.pengguna.ListTokoActivity
 import com.tapisdev.forumjualburung.base.BaseFragment
@@ -66,6 +67,10 @@ class UserHomeFragment : BaseFragment(){
         }
         rlInformasi.setOnClickListener {
             val i = Intent(requireContext(),ListInformasiUserActivity::class.java)
+            startActivity(i)
+        }
+        rlDiskusi.setOnClickListener {
+            val i = Intent(requireContext(),ListDiskusiActivity::class.java)
             startActivity(i)
         }
 
