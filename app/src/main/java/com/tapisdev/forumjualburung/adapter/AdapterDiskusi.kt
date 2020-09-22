@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
+import com.tapisdev.forumjualburung.activity.DetailDiskusiActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailInformasiActivity
+import com.tapisdev.forumjualburung.activity.pengguna.DetailBurungUserActivity
 import com.tapisdev.forumjualburung.activity.pengguna.DetailInformasiUserActivity
 import com.tapisdev.forumjualburung.model.Diskusi
 import com.tapisdev.forumjualburung.model.Informasi
@@ -16,6 +18,7 @@ import com.tapisdev.forumjualburung.model.UserPreference
 import kotlinx.android.synthetic.main.row_diskusi.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.tvDeskripsi
+import kotlinx.android.synthetic.main.row_toko.view.*
 import java.io.Serializable
 
 class AdapterDiskusi(private val list:ArrayList<Diskusi>) : RecyclerView.Adapter<AdapterDiskusi.Holder>(){
@@ -39,8 +42,9 @@ class AdapterDiskusi(private val list:ArrayList<Diskusi>) : RecyclerView.Adapter
 
         holder.view.lineDiskusi.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-
-
+            val i = Intent(holder.view.lineDiskusi.context, DetailDiskusiActivity::class.java)
+            i.putExtra("diskusi",list.get(position) as Serializable)
+            holder.view.lineToko.context.startActivity(i)
         }
 
     }
