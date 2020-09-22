@@ -23,10 +23,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.pengguna.DetailTutorialUserActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.pengguna.DetailInformasiUserActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.pengguna.ListInformasiUserActivity"
+            android:label="Informasi"></activity>
+        <activity
+            android:name=".activity.pengguna.ListTokoActivity"
+            android:label="Data Toko" />
+        <activity
+            android:name=".activity.pengguna.ListBurungUserActivity"
+            android:label="Data Burung" />
+        <activity
+            android:name=".activity.pengguna.DetailTutorialUserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.pengguna.DetailInformasiUserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.pengguna.DetailBurungUserActivity"
             android:label="Detail Burung" />

@@ -5,10 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.fragment.app.Fragment
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
-import com.tapisdev.forumjualburung.fragment.UserInformasiFragment
-import com.tapisdev.forumjualburung.fragment.UserTokoFragment
-import com.tapisdev.forumjualburung.fragment.UserProfilFragment
-import com.tapisdev.forumjualburung.fragment.UserTutorialFragment
+import com.tapisdev.forumjualburung.fragment.*
 import kotlinx.android.synthetic.main.activity_home_user.*
 
 class HomeUserActivity : BaseActivity() {
@@ -18,25 +15,15 @@ class HomeUserActivity : BaseActivity() {
         setContentView(R.layout.activity_home_user)
 
         nav_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        val fragment = UserTokoFragment.newInstance()
+        val fragment = UserHomeFragment.newInstance()
         addFragment(fragment)
 
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_toko -> {
-                val fragment = UserTokoFragment.newInstance()
-                addFragment(fragment)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_informasi -> {
-                val fragment = UserInformasiFragment.newInstance()
-                addFragment(fragment)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_tutorial -> {
-                val fragment = UserTutorialFragment.newInstance()
+            R.id.navigation_home -> {
+                val fragment = UserHomeFragment.newInstance()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
