@@ -14,17 +14,20 @@ import com.tapisdev.forumjualburung.activity.pengguna.DetailBurungUserActivity
 import com.tapisdev.forumjualburung.activity.pengguna.DetailInformasiUserActivity
 import com.tapisdev.forumjualburung.model.Diskusi
 import com.tapisdev.forumjualburung.model.Informasi
+import com.tapisdev.forumjualburung.model.Komentar
 import com.tapisdev.forumjualburung.model.UserPreference
 import kotlinx.android.synthetic.main.row_diskusi.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.*
 import kotlinx.android.synthetic.main.row_informasi.view.tvDeskripsi
+import kotlinx.android.synthetic.main.row_komentar.view.*
 import kotlinx.android.synthetic.main.row_toko.view.*
 import java.io.Serializable
+import java.text.SimpleDateFormat
 
-class AdapterDiskusi(private val list:ArrayList<Diskusi>) : RecyclerView.Adapter<AdapterDiskusi.Holder>(){
+class AdapterKomentar(private val list:ArrayList<Komentar>) : RecyclerView.Adapter<AdapterKomentar.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_diskusi,parent,false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.row_komentar,parent,false))
     }
 
     lateinit var mUserPref : UserPreference
@@ -33,23 +36,28 @@ class AdapterDiskusi(private val list:ArrayList<Diskusi>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
-        mUserPref = UserPreference(holder.view.lineDiskusi.context)
+        mUserPref = UserPreference(holder.view.lineKomentar.context)
+        var tanggal = list?.get(position)?.tanggal
+        tanggal = convertDate(tanggal.toString())
 
-        holder.view.tvJudul.text = list?.get(position)?.judul
-        holder.view.tvDeskripsiDiskusi.text = list?.get(position)?.deskripsi
-        holder.view.tvTipePembuat.text = "Diskusi dimulai oleh "+list?.get(position)?.namaPembuat
+        holder.view.tvNamaKomentar.text = list?.get(position)?.nama
+        holder.view.tvIsiKomentar.text = list?.get(position)?.isiKomentar
+        holder.view.tvTanggal.text = ""+tanggal
 
-
-        holder.view.lineDiskusi.setOnClickListener {
-            Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineDiskusi.context, DetailDiskusiActivity::class.java)
-            i.putExtra("diskusi",list.get(position) as Serializable)
-            holder.view.lineDiskusi.context.startActivity(i)
-        }
-
+        Glide.with(holder.view.ivKomentar.context)
+            .load(list?.get(position)?.foto)
+            .into(holder.view.ivKomentar)
 
     }
 
     class Holder(val view: View) : RecyclerView.ViewHolder(view)
 
+    fun convertDate(tanggal : String): String {
+        val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        //val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
+        val formatter = SimpleDateFormat("dd-MM-yyyy")
+        val output = formatter.format(parser.parse(tanggal))
+
+        return output
+    }
 }

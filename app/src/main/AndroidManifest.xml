@@ -25,7 +25,8 @@
         tools:replace="android:icon">
         <activity android:name=".activity.DetailDiskusiActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.AddDiskusiActivity" />
+        <activity android:name=".activity.AddDiskusiActivity"
+            android:label="Diskusi"/>
         <activity
             android:name=".activity.pengguna.ListDiskusiActivity"
             android:theme="@style/AppTheme.NoActionBar" />

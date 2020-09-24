@@ -43,7 +43,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:id="@+id/ivDiskusi"
                 android:src="@drawable/ic_appicon"/>
 
@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_above="@+id/rlAddKomentar"
         android:id="@+id/cvFoodName"
         android:layout_below="@+id/rlDiskusi"
         app:cardCornerRadius="5dp"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Komentar"
                     android:textSize="14sp"
@@ -75,19 +76,19 @@
                     android:textColor="@color/black"
                     android:id="@+id/tvKomentar"
                     android:layout_marginRight="5dp"
-                    android:fontFamily="@font/roboto_bold"
-                    tools:ignore="MissingPrefix" />
+                    />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rlIsiKomentar"
                     android:layout_below="@+id/tvKomentar"
                     android:padding="5dp">
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/animation_view_komentar"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"
+                        android:layout_height="250dp"
                         android:layout_marginTop="40dp"
                         android:layout_margin="15dp"
                         android:layout_centerInParent="true"
@@ -99,12 +100,79 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvKomentar"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         />
 
                 </RelativeLayout>
 
             </RelativeLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/rlAddKomentar"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Silahkan tulis komentar anda"
+            android:textColor="@color/light_orange"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edKomentar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvAddDiskusi"
+                android:background="@drawable/bg_editfield"
+                android:hint="Komentar anda.."
+                android:inputType="textMultiLine"
+                android:imeOptions="actionGo"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvAddKomentar"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10sp"
+                android:layout_marginBottom="10sp"
+                android:background="@drawable/bg_editfield"
+                android:backgroundTint="@color/light_orange"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="Kirim"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </RelativeLayout>
