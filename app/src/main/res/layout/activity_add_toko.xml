@@ -82,6 +82,22 @@
             android:paddingRight="10sp"
             android:textSize="14sp" />
 
+        <EditText
+            android:id="@+id/edTelepon"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/edFullName"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Telepon"
+            android:inputType="number"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

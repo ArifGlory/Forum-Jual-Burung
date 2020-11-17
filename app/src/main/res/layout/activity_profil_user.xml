@@ -13,7 +13,7 @@
         android:id="@+id/rlToolBar">
 
         <ImageView
-            android:id="@+id/ivToko"
+            android:id="@+id/ivFotoUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -59,78 +59,42 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Nama Toko"
-                    android:textSize="14sp"
+                    tools:text="Nama User"
+                    android:textSize="18sp"
                     android:layout_margin="5dp"
                     android:textColor="@color/black"
-                    android:id="@+id/tvName"
+                    android:id="@+id/tvNamaUser"
                     android:layout_marginRight="5dp"
                     android:fontFamily="@font/roboto_bold"
                     tools:ignore="MissingPrefix" />
 
                 <TextView
-                    android:id="@+id/tvAlamat"
+                    android:id="@+id/tvEmailUser"
                     android:fontFamily="@font/roboto_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:layout_below="@+id/tvName"
-                    android:text="Bandar lampung"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tvNamaUser"
+                    android:text="Email"
                     android:textColor="@color/light_orange"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     tools:ignore="MissingPrefix" />
 
                 <TextView
-                    android:id="@+id/tvHubungi"
+                    android:id="@+id/tvPhoneUser"
+                    android:fontFamily="@font/roboto_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:padding="3dp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_horizontal"
-                    android:background="@color/green_500"
-                    android:text="Hubungi Toko (WA)"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_below="@+id/tvNamaUser"
+                    android:text="Telepon"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/light_orange"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="10dp"
                     tools:ignore="MissingPrefix" />
-
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/cvFoodName"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/cvFoodDetail"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animation_view_toko"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_margin="15dp"
-                    android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="true"
-                    app:lottie_rawRes="@raw/water_loading"
-                    app:lottie_loop="true"
-                    app:lottie_autoPlay="true" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBurungUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp" />
-
-            </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 

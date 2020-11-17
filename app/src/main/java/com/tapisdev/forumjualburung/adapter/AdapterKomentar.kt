@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.DetailDiskusiActivity
+import com.tapisdev.forumjualburung.activity.ProfilUserActivity
 import com.tapisdev.forumjualburung.activity.admin.DetailInformasiActivity
 import com.tapisdev.forumjualburung.activity.pengguna.DetailBurungUserActivity
 import com.tapisdev.forumjualburung.activity.pengguna.DetailInformasiUserActivity
@@ -47,6 +48,13 @@ class AdapterKomentar(private val list:ArrayList<Komentar>) : RecyclerView.Adapt
         Glide.with(holder.view.ivKomentar.context)
             .load(list?.get(position)?.foto)
             .into(holder.view.ivKomentar)
+
+        holder.view.lineKomentar.setOnClickListener {
+            Log.d("adapterIsi",""+list.get(position).toString())
+            val i = Intent(holder.view.lineKomentar.context, ProfilUserActivity::class.java)
+            i.putExtra("iduser",list.get(position).idPembuat)
+            holder.view.lineKomentar.context.startActivity(i)
+        }
 
     }
 

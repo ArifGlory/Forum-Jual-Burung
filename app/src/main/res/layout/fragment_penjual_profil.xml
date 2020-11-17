@@ -30,7 +30,7 @@
         <RelativeLayout
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal">
             <com.makeramen.roundedimageview.RoundedImageView
                 android:layout_width="90dp"
@@ -105,6 +105,80 @@
             tools:ignore="MissingPrefix" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12dp"
+            android:textSize="12sp"
+            android:layout_centerInParent="true"
+            android:text="Deskripsi Toko"
+            tools:ignore="MissingPrefix" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/bg_editfield"
+            android:id="@+id/edDeskripsi"
+            android:textColor="@color/black"
+            android:paddingLeft="10dp"
+            android:hint="Deskripsi toko"
+            android:textSize="12sp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12dp"
+            android:textSize="12sp"
+            android:layout_centerInParent="true"
+            fontPath="@string/font_medium"
+            android:text="Alamat Toko"
+            tools:ignore="MissingPrefix" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/bg_editfield"
+                android:id="@+id/edAlamat"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:hint="Alamat toko"
+                android:textSize="12sp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/tvChooseLocation"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvChooseLocation"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_editfield"
+                android:backgroundTint="@color/colorPrimary"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:layout_marginRight="5dp"
+                android:text="Pilih Lokasi"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+        <TextView
             android:id="@+id/tvSaveEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,34 +199,33 @@
             android:visibility="invisible"
             tools:ignore="MissingPrefix" />
 
-        <TextView
-            android:id="@+id/tvGantiPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spKondisi"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/bg_editfield"
-            android:backgroundTint="@color/light_orange"
-            android:fontFamily="@font/roboto_medium"
-            android:gravity="center_horizontal"
-            android:padding="10sp"
-            android:text="Ganti Password"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:visibility="visible"
-            tools:ignore="MissingPrefix" />
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_above="@+id/tvUpdate"
-        android:weightSum="2">
+        android:layout_alignParentBottom="true"
+       android:layout_marginBottom="10dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tvGantiPassword"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/light_orange"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_marginTop="10dp"
+            android:text="Ganti Password"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="visible"
+            tools:ignore="MissingPrefix" />
 
         <TextView
             android:layout_width="match_parent"
@@ -193,23 +266,4 @@
             tools:ignore="MissingPrefix" />
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:backgroundTint="@color/light_orange"
-        android:background="@drawable/bg_corner_white_10"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
-        android:layout_alignParentBottom="true"
-        android:text="Simpan Perubahan"
-        android:id="@+id/tvUpdate"
-        android:textStyle="bold"
-        android:textSize="13sp"
-        android:layout_marginTop="10dp"
-        tools:ignore="MissingPrefix" />
 </RelativeLayout>

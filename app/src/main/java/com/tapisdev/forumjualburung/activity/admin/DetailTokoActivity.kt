@@ -59,36 +59,6 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
         permissionHelper = PermissionHelper(this)
         permissionHelper.setPermissionListener(this)
 
-        tvEdit.setOnClickListener {
-            state = "edit"
-            updateUI()
-        }
-        tvDelete.setOnClickListener {
-            SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Anda yakin menghapus ini ?")
-                .setContentText("Data yang sudah dihapus tidak bisa dikembalikan")
-                .setConfirmText("Ya")
-                .setConfirmClickListener { sDialog ->
-                    sDialog.dismissWithAnimation()
-                    showLoading(this)
-                    tokoRef.document(toko.tokoId.toString()).delete().addOnSuccessListener {
-                        dismissLoading()
-                        showSuccessMessage("Data berhasil dihapus")
-                        onBackPressed()
-                        Log.d("deleteDoc", "DocumentSnapshot successfully deleted!")
-                    }.addOnFailureListener {
-                            e ->
-                        dismissLoading()
-                        showErrorMessage("terjadi kesalahan "+e)
-                        Log.w("deleteDoc", "Error deleting document", e)
-                    }
-
-                }
-                .setCancelButton(
-                    "Tidak"
-                ) { sDialog -> sDialog.dismissWithAnimation() }
-                .show()
-        }
         tvSaveEdit.setOnClickListener {
             checkValidation()
         }
@@ -245,6 +215,7 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             edFullName.setText(toko.nama)
             edAlamat.setText(toko.alamat.toString())
             edDeskripsi.setText(toko.deskripsi)
+            edPhone.setText(toko.phone)
             tvHintFoto.visibility = View.INVISIBLE
             tvSaveEdit.visibility = View.INVISIBLE
 
@@ -255,6 +226,7 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             edFullName.isEnabled = false
             edAlamat.isEnabled = false
             edDeskripsi.isEnabled = false
+            edPhone.isEnabled = false
             ivToko.isEnabled = false
             tvSaveEdit.isEnabled = false
             tvEditLokasi.isEnabled = false
@@ -266,6 +238,7 @@ class DetailTokoActivity : BaseActivity(),PermissionHelper.PermissionListener {
             edFullName.isEnabled = true
             edAlamat.isEnabled = true
             edDeskripsi.isEnabled = true
+            edPhone.isEnabled = true
             ivToko.isEnabled = true
             tvSaveEdit.isEnabled= true
             tvEditLokasi.isEnabled= true

@@ -18,6 +18,7 @@ import com.google.firebase.storage.StorageReference
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.Burung
+import com.tapisdev.forumjualburung.model.UserPreference
 import com.tapisdev.forumjualburung.util.PermissionHelper
 import kotlinx.android.synthetic.main.activity_add_burung.*
 import kotlinx.android.synthetic.main.activity_detail_burung.*
@@ -54,6 +55,7 @@ class DetailBurungActivity : BaseActivity(),PermissionHelper.PermissionListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_burung)
+        mUserPref = UserPreference(this)
 
         i = intent
         burung = i.getSerializableExtra("burung") as Burung
@@ -230,6 +232,15 @@ class DetailBurungActivity : BaseActivity(),PermissionHelper.PermissionListener 
             ivBurung.isEnabled = false
             tvSaveEdit.isEnabled = false
             spKondisi.isEnabled = false
+
+            if (!mUserPref.getJenisUser().equals("penjual")){
+                tvEdit.visibility = View.INVISIBLE
+                tvDelete.visibility = View.INVISIBLE
+
+                tvEdit.isEnabled = false
+                tvDelete.isEnabled = false
+            }
+
         }else if (state.equals("edit")){
             tvHintFoto.visibility = View.VISIBLE
             tvSaveEdit.visibility = View.VISIBLE

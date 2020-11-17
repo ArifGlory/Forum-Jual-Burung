@@ -8,6 +8,9 @@ class UserPreference(context: Context) {
     private val KEY_EMAIL = "email"
     private val KEY_FOTO = "foto"
     private val KEY_PHONE = "phone"
+    private val KEY_ALAMAT = "alamat"
+    private val KEY_DESKRIPSI = "deskripsi"
+    private val KEY_LATLON = "latlon"
 
     var PREFS_NAME = "UserPref"
     private val preferences  = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -16,6 +19,24 @@ class UserPreference(context: Context) {
     fun saveName(text : String){
         val editor = preferences!!.edit()
         editor.putString(KEY_NAME,text)
+        editor.commit()
+    }
+
+    fun saveAlamat(text : String){
+        val editor = preferences!!.edit()
+        editor.putString(KEY_ALAMAT,text)
+        editor.commit()
+    }
+
+    fun saveDeskripsi(text : String){
+        val editor = preferences!!.edit()
+        editor.putString(KEY_DESKRIPSI,text)
+        editor.commit()
+    }
+
+    fun saveLatlon(text : String){
+        val editor = preferences!!.edit()
+        editor.putString(KEY_LATLON,text)
         editor.commit()
     }
 
@@ -62,6 +83,18 @@ class UserPreference(context: Context) {
 
     fun getPhone() : String?{
         return preferences!!.getString(KEY_PHONE,null)
+    }
+
+    fun getAlamat() : String?{
+        return preferences!!.getString(KEY_ALAMAT,null)
+    }
+
+    fun getDeskripsi() : String?{
+        return preferences!!.getString(KEY_DESKRIPSI,null)
+    }
+
+    fun getLatlon() : String?{
+        return preferences!!.getString(KEY_LATLON,null)
     }
 
 

@@ -121,6 +121,7 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
         var getName = edFullName.text.toString()
         var getAlamat = edAlamat.text.toString()
         var getDeskripsi = edDeskripsi.text.toString()
+        var getPhone = edTelepon.text.toString()
 
         if (getName.equals("") || getName.length == 0){
             showErrorMessage("Nama Belum diisi")
@@ -128,7 +129,10 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
             showErrorMessage("Alamat Belum diisi")
         } else if (getDeskripsi.equals("") || getDeskripsi.length == 0){
             showErrorMessage("Deskripsi Belum diisi")
-        }else if (latlon.equals("none")){
+        }else if (getPhone.equals("") || getPhone.length == 0){
+            showErrorMessage("Telepon Belum diisi")
+        }
+        else if (latlon.equals("none")){
             showErrorMessage("Lokasi belum dipilih")
         }else if(fotoBitmap == null){
             showErrorMessage("Gambar Toko belum dipilih")
@@ -139,7 +143,8 @@ class AddTokoActivity : BaseActivity(), PermissionHelper.PermissionListener {
                 "",
                 getDeskripsi,
                 getAlamat,
-                latlon)
+                latlon,
+                getPhone)
             uploadToko()
         }
     }

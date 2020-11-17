@@ -54,7 +54,7 @@
         android:layout_below="@+id/rlToolBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/lineButtonGroup">
+        android:layout_above="@id/rlRegistration">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,57 +78,7 @@
             tools:ignore="MissingPrefix" />
 
     </RelativeLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:id="@+id/lineButtonGroup"
-        android:weightSum="2"
-        android:layout_above="@id/rlRegistration"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvEdit"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edDeskripsi"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/bg_editfield"
-            android:backgroundTint="@color/main_green_color"
-            android:gravity="center_horizontal"
-            android:padding="10sp"
-            android:text="Ubah"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            tools:ignore="MissingPrefix" />
-
-        <TextView
-            android:id="@+id/tvDelete"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edDeskripsi"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/bg_editfield"
-            android:backgroundTint="@color/red_btn_bg_color"
-            android:gravity="center_horizontal"
-            android:padding="10sp"
-            android:text="Hapus"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            tools:ignore="MissingPrefix" />
-
-    </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -194,6 +144,22 @@
             android:background="@drawable/bg_editfield"
             android:hint="Deskripsi"
             android:inputType="textMultiLine"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edPhone"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/edAlamat"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_editfield"
+            android:hint="Telepon"
+            android:inputType="number"
             android:imeOptions="actionGo"
             android:paddingLeft="10sp"
             android:paddingRight="10sp"

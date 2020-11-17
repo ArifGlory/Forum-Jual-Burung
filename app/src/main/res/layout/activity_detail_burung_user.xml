@@ -102,6 +102,23 @@
                 android:textSize="15sp"
                 tools:ignore="MissingPrefix" />
 
+            <TextView
+                android:id="@+id/tvHubungiPemilik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10sp"
+                android:layout_marginBottom="10sp"
+                android:gravity="center_horizontal"
+                android:padding="5sp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimary"
+                android:text="Hubungi Pemilik"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="MissingPrefix" />
+
         </LinearLayout>
 
 

@@ -23,10 +23,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.DetailDiskusiActivity"
+        <activity android:name=".activity.penjual.HomePenjualActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.AddDiskusiActivity"
-            android:label="Diskusi"/>
+        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity
+            android:name=".activity.ProfilUserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DetailDiskusiActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AddDiskusiActivity"
+            android:label="Diskusi" />
         <activity
             android:name=".activity.pengguna.ListDiskusiActivity"
             android:theme="@style/AppTheme.NoActionBar" />

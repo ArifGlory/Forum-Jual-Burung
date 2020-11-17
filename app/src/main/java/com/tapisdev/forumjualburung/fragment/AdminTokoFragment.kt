@@ -36,7 +36,6 @@ class AdminTokoFragment : BaseFragment() {
 
         val root = inflater.inflate(R.layout.fragment_admin_toko, container, false)
         rvToko = root.findViewById(R.id.rvToko)
-        fab = root.findViewById(R.id.fab)
         animation_view = root.findViewById(R.id.animation_view)
 
         adapter = AdapterToko(listToko)
@@ -44,11 +43,6 @@ class AdminTokoFragment : BaseFragment() {
         rvToko.setHasFixedSize(true)
         rvToko.layoutManager = LinearLayoutManager(activity)
         rvToko.adapter = adapter
-
-        fab.setOnClickListener {
-            val i = Intent(activity,AddTokoActivity::class.java)
-            startActivity(i)
-        }
 
 
 

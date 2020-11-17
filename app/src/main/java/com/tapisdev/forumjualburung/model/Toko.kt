@@ -12,5 +12,6 @@ data class Toko(
     var foto: String? = "",
     var deskripsi: String? = "",
     var alamat: String? = "",
-    var latlon: String? = ""
+    var latlon: String? = "",
+    var phone: String? = ""
 ) : Parcelable, java.io.Serializable

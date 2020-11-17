@@ -43,7 +43,7 @@ class AdapterBurung(private val list:ArrayList<Burung>) : RecyclerView.Adapter<A
 
         holder.view.lineToko.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            if (mUserPref.getJenisUser().equals("admin")){
+            if (mUserPref.getJenisUser().equals("admin") || mUserPref.getJenisUser().equals("penjual")){
                 val i = Intent(holder.view.lineToko.context, DetailBurungActivity::class.java)
                 i.putExtra("burung",list.get(position) as Serializable)
                 holder.view.lineToko.context.startActivity(i)

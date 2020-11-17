@@ -34,12 +34,25 @@
             android:textSize="15sp"
             tools:ignore="MissingPrefix" />
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:popupBackground="@color/white"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:padding="5dp"
+            android:entries="@array/listJenisUser"
+            android:background="@drawable/et_background1"
+            android:id="@+id/spJenisUser"></Spinner>
+
 
         <EditText
             android:id="@+id/edFullName"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_below="@id/tvTitle"
+            android:layout_below="@id/spJenisUser"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:background="@drawable/bg_editfield"

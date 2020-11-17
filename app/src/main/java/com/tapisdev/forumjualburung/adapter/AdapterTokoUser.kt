@@ -18,6 +18,7 @@ import com.tapisdev.forumjualburung.activity.pengguna.DetailTokoUserActivity
 import com.tapisdev.forumjualburung.model.Cart
 import com.tapisdev.forumjualburung.model.Toko
 import com.tapisdev.forumjualburung.model.SharedVariable
+import com.tapisdev.forumjualburung.model.UserModel
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.row_toko.view.*
 import kotlinx.android.synthetic.main.row_toko_user.view.*
@@ -29,7 +30,7 @@ import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AdapterTokoUser(private val list:ArrayList<Toko>) : RecyclerView.Adapter<AdapterTokoUser.Holder>(){
+class AdapterTokoUser(private val list:ArrayList<UserModel>) : RecyclerView.Adapter<AdapterTokoUser.Holder>(){
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -40,7 +41,7 @@ class AdapterTokoUser(private val list:ArrayList<Toko>) : RecyclerView.Adapter<A
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
-        holder.view.tvName.text = list?.get(position)?.nama
+        holder.view.tvName.text = list?.get(position)?.name
         holder.view.tvAlamat.text =list?.get(position)?.alamat
 
         Glide.with(holder.view.ivToko.context)

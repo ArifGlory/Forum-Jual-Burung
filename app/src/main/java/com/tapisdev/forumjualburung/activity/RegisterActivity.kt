@@ -25,7 +25,6 @@ class RegisterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         mUserPref = UserPreference(this)
-        selectedJenisUser = "pengguna"
 
         tvLogin.setOnClickListener {
             val i = Intent(applicationContext,MainActivity::class.java)
@@ -34,6 +33,26 @@ class RegisterActivity : BaseActivity() {
         tvSignup.setOnClickListener {
             checkValidation()
         }
+        spJenisUser.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                Log.d(TAG_JENIS, "jenis nya "+ parent?.getItemAtPosition(position).toString())
+                var selected = parent?.getItemAtPosition(position).toString()
+                if (selected.equals("Pilih Jenis Pengguna")){
+                    selectedJenisUser = "none"
+                }else if (selected.equals("Penjual")){
+                    selectedJenisUser = "penjual"
+                }else if (selected.equals("Pengguna")){
+                    selectedJenisUser = "pengguna"
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        })
 
     }
 
@@ -62,7 +81,10 @@ class RegisterActivity : BaseActivity() {
             showErrorMessage("Password harus lebih dari 8 karakter")
         }
         else{
-            userModel = UserModel(getName,getEmail,"",getPhone,selectedJenisUser,"")
+            userModel = UserModel(getName,getEmail,"",getPhone,selectedJenisUser,"",
+                "",
+                "",
+                "")
             Log.d(TAG_SIMPAN," namanya : "+userModel.name)
 
             registerUser(userModel.email,getPassword)

@@ -37,7 +37,6 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback,PermissionHelper.Permiss
         permissionHelper.setPermissionListener(this)
 
 
-        permissionLocation()
     }
 
     /**
@@ -51,7 +50,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback,PermissionHelper.Permiss
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.setMyLocationEnabled(true)
+        permissionLocation()
 
         // Add a marker in Sydney and move the camera
         val tekno = LatLng(-5.382109, 105.257912)
@@ -74,7 +73,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback,PermissionHelper.Permiss
     }
 
     override fun onPermissionCheckDone() {
-
+        mMap.setMyLocationEnabled(true)
     }
 
     override fun onLocationChanged(location: Location?) {

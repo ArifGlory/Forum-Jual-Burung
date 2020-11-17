@@ -7,6 +7,7 @@ import com.tapisdev.forumjualburung.MainActivity
 import com.tapisdev.forumjualburung.R
 import com.tapisdev.forumjualburung.activity.admin.DashboardAdminActivity
 import com.tapisdev.forumjualburung.activity.pengguna.HomeUserActivity
+import com.tapisdev.forumjualburung.activity.penjual.HomePenjualActivity
 import com.tapisdev.forumjualburung.base.BaseActivity
 import com.tapisdev.forumjualburung.model.UserPreference
 
@@ -37,12 +38,16 @@ class SplashActivity : BaseActivity() {
             Log.d("userpref"," jenis user : "+mUserPref.getJenisUser())
             if (mUserPref.getJenisUser() != null){
                 if (mUserPref.getJenisUser().equals("admin")){
-                val i = Intent(applicationContext,DashboardAdminActivity::class.java)
-                startActivity(i)
+                    val i = Intent(applicationContext,DashboardAdminActivity::class.java)
+                    startActivity(i)
                 }else if(mUserPref.getJenisUser().equals("pengguna")){
                     val i = Intent(applicationContext,HomeUserActivity::class.java)
                     startActivity(i)
-                }else{
+                }else if(mUserPref.getJenisUser().equals("penjual")){
+                    val i = Intent(applicationContext,HomePenjualActivity::class.java)
+                    startActivity(i)
+                }
+                else{
                     val i = Intent(applicationContext,MainActivity::class.java)
                     startActivity(i)
                 }

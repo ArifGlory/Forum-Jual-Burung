@@ -39,16 +39,6 @@
         app:lottie_loop="true"
         app:lottie_autoPlay="true" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:contentDescription="Add Catering"
-        app:srcCompat="@drawable/ic_add_white_24dp"
-        tools:ignore="VectorDrawableCompat" />
 
 
 </RelativeLayout>
