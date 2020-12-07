@@ -81,8 +81,8 @@ class DetailBurungUserActivity : BaseActivity() {
                     if (document.exists()) {
                         Log.d(TAG_GET_USER, "DocumentSnapshot data: " + document.data)
                         //convert doc to object
-                        tvTitle.setText("Burung dimiliki oleh : "+toko.name)
                         toko = document.toObject(UserModel::class.java)!!
+                        tvTitle.setText("Burung dimiliki oleh : "+toko.name)
                         teleponToko = toko.phone
 
                     } else {

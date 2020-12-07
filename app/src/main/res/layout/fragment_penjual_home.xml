@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/gray"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -20,85 +20,70 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="30dp"
-            android:padding="10dp">
+            android:padding="2dp">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="2dp"
-                app:cardElevation="2dp"
-                app:cardUseCompatPadding="true">
+                android:background="@color/light_orange"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/ic_appicon"
+                            />
+
+                    </RelativeLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical"
-                        android:minHeight="50dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp">
+                        android:orientation="vertical">
 
-
-
-                        <RelativeLayout
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-
-                            <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:src="@drawable/ic_appicon"
-                                />
-
-                        </RelativeLayout>
-
-                        <View
-                            android:layout_width="15dp"
-                            android:layout_height="wrap_content" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:text="@string/app_name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="@color/white" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/app_name"
-                                android:id="@+id/tvNamaToko"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                android:textColor="@color/colorPrimary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/slogan"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/light_orange" />
-
-
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slogan"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/white" />
 
 
                     </LinearLayout>
 
 
-
-
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="0dp"

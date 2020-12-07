@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +23,7 @@ import com.google.firebase.storage.StorageReference
 import com.makeramen.roundedimageview.RoundedImageView
 import com.tapisdev.forumjualburung.MainActivity
 import com.tapisdev.forumjualburung.R
-import com.tapisdev.forumjualburung.activity.pengguna.ListBurungUserActivity
-import com.tapisdev.forumjualburung.activity.pengguna.ListDiskusiActivity
-import com.tapisdev.forumjualburung.activity.pengguna.ListInformasiUserActivity
-import com.tapisdev.forumjualburung.activity.pengguna.ListTokoActivity
+import com.tapisdev.forumjualburung.activity.pengguna.*
 import com.tapisdev.forumjualburung.base.BaseFragment
 import com.tapisdev.forumjualburung.model.Burung
 import com.tapisdev.forumjualburung.model.UserPreference
@@ -42,6 +40,7 @@ class UserHomeFragment : BaseFragment(){
     lateinit var rlToko : RelativeLayout
     lateinit var rlDiskusi : RelativeLayout
     lateinit var rlInformasi : RelativeLayout
+    lateinit var edSearchBurung : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +55,7 @@ class UserHomeFragment : BaseFragment(){
         rlToko = root.findViewById(R.id.rlToko)
         rlDiskusi = root.findViewById(R.id.rlDiskusi)
         rlInformasi = root.findViewById(R.id.rlInformasi)
+        edSearchBurung = root.findViewById(R.id.edSearchBurung)
 
         rlBurung.setOnClickListener {
             val i = Intent(requireContext(),ListBurungUserActivity::class.java)
@@ -73,6 +73,21 @@ class UserHomeFragment : BaseFragment(){
             val i = Intent(requireContext(),ListDiskusiActivity::class.java)
             startActivity(i)
         }
+        edSearchBurung.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                var getBurung = edSearchBurung.text.toString()
+                if (getBurung.equals("") || getBurung.length == 0){
+                    showErrorMessage("Nama Burung Belum diisi")
+                }else{
+                    val i = Intent(activity,ResultBurungActivity::class.java)
+                    i.putExtra("keyword",getBurung)
+                    startActivity(i)
+                }
+                return@OnKeyListener true
+            }
+            false
+        })
 
 
 
